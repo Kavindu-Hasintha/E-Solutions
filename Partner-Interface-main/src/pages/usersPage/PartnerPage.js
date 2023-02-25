@@ -17,6 +17,7 @@ import ClientDetails from "../clientDetails/ClientDetails";
 import Project from "../project";
 import Assignment from "../assignment";
 import Smtp from "../smpt";
+import ClientDetailsnew from "../clientDetails/ClientDeatailsnew";
 
 const PartnerPage = () => {
   const [theme, colorMode] = useMode();
@@ -31,7 +32,8 @@ const PartnerPage = () => {
               <Topbar />
               <Routes>
                 <Route path="/" element={<Partnerdashboard />} />
-                <Route path="clientDetails" element={<ClientDetails />} />
+                <Route path="clientDetails" element={<ClientDetailsnew/>}/>
+                {/* <Route path="clientDetails" element={<ClientDetails />} /> */}
                 <Route path="project" element={<Project />} />
                 <Route path="assignment" element={<Assignment />} />
                 <Route path="smtp" element={<Smtp />} />

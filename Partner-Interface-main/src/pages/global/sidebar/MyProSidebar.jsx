@@ -7,14 +7,14 @@ import { useSidebarContext } from "./sidebarContext";
 import { Link } from "react-router-dom";
 import { tokens } from "../../../theme";
 import { useTheme, Box, Typography, IconButton } from "@mui/material";
-import { BsFillGridFill } from "react-icons/bs";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import SwitchRightOutlinedIcon from "@mui/icons-material/SwitchRightOutlined";
 import SwitchLeftOutlinedIcon from "@mui/icons-material/SwitchLeftOutlined";
-import ClientDetails from "./Data";
 import NameUser from "./Data";
 import Options from "./Options";
+import { useEffect } from "react";
+import ClientDetails from "../../clientDetails/ClientDetails";
 // import {Employee} from "./Data";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -36,9 +36,10 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 const MyProSidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [selected, setSelected] = useState("Dashboard");
+  // const [selected, setSelected] = useState("Dashboard");
   const { sidebarRTL, setSidebarRTL, sidebarImage } = useSidebarContext();
   const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();
+  
   return (
     <Box
       sx={{
@@ -110,9 +111,6 @@ const MyProSidebar = () => {
                   <NameUser/>
                   <b className="menu">menu</b>
                 </b>
-                {/* <Typography className="sidebarup">
-                  <b className="exampleuser">Example User <br/><b className="menu">menu</b></b>
-                </Typography> */}
                 <IconButton
                   onClick={
                     broken ? () => toggleSidebar() : () => collapseSidebar()

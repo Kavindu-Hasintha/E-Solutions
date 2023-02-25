@@ -1,6 +1,5 @@
 import React, { useState, Component } from "react";
 import { ApiPath } from "../../API/ApiPath";
-import logo from "../../Images/logo192.png";
 import ClientBox from "../../components/ClientBox";
 
 class ClientDetails extends Component {
@@ -9,11 +8,14 @@ class ClientDetails extends Component {
 
     this.state = {
       clients: [],
+      currentPage: 1,
+      itemsPerPage: 6,
+      totalPages: 0,
       DataisLoaded: false,
       va: window.location.pathname.split("/"),
     };
+    
   }
-
   componentDidMount() {
     fetch(
       ApiPath.API_URL +
@@ -40,10 +42,10 @@ class ClientDetails extends Component {
 
     return (
       <div className="App">
-        <h1 style={{color:"black"}}>Clients Details</h1>
+        <h1 style={{color:"black",backgroundColor:"#FFFFFF"}}>Clients Details</h1>
         <div
           style={{
-            height: "91.5vh",
+            height: "fit-content",
             display: "grid",
             gridGap: "20px",
             gridTemplateColumns: "auto auto auto",

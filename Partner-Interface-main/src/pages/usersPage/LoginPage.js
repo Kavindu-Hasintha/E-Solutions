@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ApiPath } from "../../API/ApiPath";
-import Header from "../../components/Header";
 import "./LoginPage.css";
 const initialState = {
   username: "",
