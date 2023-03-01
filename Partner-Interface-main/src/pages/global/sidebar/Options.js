@@ -40,12 +40,17 @@ class Options extends Component {
       {
         id: 2,
         title: "Register New Partner",
-        to: "",
+        to: "registernewpartner",
       },
       {
-        id: 3,
-        title: "Register New Client",
-        to: "",
+        id:3,
+        title:"Register New Client",
+        to: "registernewclient",
+      },
+      {
+        id: 4,
+        title: "Client Profile Management",
+        to: "clientprofilemanagement",
       },
     ];
     const adminOptions = [
@@ -56,12 +61,12 @@ class Options extends Component {
       },
       {
         id: 2,
-        title: "Partner",
+        title: "My Partners",
         to: "newPartner",
       },
       {
         id: 3,
-        title: "Client",
+        title: "My Clients",
         to: "newClient",
       },
     ];

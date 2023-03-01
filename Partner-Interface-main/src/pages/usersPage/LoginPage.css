@@ -22,6 +22,15 @@
 .btn-primary:focus{
     outline-color: #2b8774;
 }
-.link-primary:hover{
+.help{
+    color: #1ab394;
+    text-align: left;
+    padding-right: 172px;
+    font-size: 14px;
+}
+.help:hover{
     color: #2b8774;
+}
+.help:focus{
+    outline-color: #2b8774;
 }

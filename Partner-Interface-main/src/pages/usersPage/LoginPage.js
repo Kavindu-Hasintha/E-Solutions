@@ -160,18 +160,7 @@ const LoginPage = () => {
           </div>
 
           <div>
-            <Link to="/help">
-              <p
-                className="link-primary"
-                style={{
-                  fontSize: "0.85rem",
-                  textAlign: "start",
-                  marginLeft: "35px",
-                }}
-              >
-                Forgot Password ?
-              </p>
-            </Link>
+            <a href="./help" className="help">Forgot Password</a>
           </div>
         </div>
       </div>

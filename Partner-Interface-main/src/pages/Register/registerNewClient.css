@@ -1,0 +1,28 @@
+.editbutton{
+    color: #FFFFFF;
+    background-color: yellow;
+    cursor: pointer;
+    font-size: 24px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    margin-right: 50px;
+}
+
+.savebutton{
+    color: #FFFFFF;
+    background-color: #1ab394;
+    cursor: pointer;
+    font-size: 24px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    /* margin-right: 200px; */
+}
+
+.disablebutton{
+    color: #FFFFFF;
+    background-color: red;
+    cursor: pointer;
+    font-size: 24px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}

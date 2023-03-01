@@ -52,7 +52,7 @@ const ClientBox = ({
           <br />
           Tel.No. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {mobile_no}
           <br />
-          More details : <a href="https://www.w3schools.com/">View Client</a>
+          More details : <a href="https://www.w3schools.com/" className="moredetailslink">View Client</a>
         </div>
       </div>
       <div className="Bottom">
