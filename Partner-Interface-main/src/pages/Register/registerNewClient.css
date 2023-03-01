@@ -1,28 +1,13 @@
-.editbutton{
-    color: #FFFFFF;
-    background-color: yellow;
-    cursor: pointer;
-    font-size: 24px;
-    border: 1px solid transparent;
-    border-radius: 2px;
-    margin-right: 50px;
+.inputtags{
+    color: grey;
 }
-
-.savebutton{
+.registerbutton{
     color: #FFFFFF;
     background-color: #1ab394;
-    cursor: pointer;
-    font-size: 24px;
-    border: 1px solid transparent;
+    border-color: transparent;
     border-radius: 2px;
-    /* margin-right: 200px; */
+    cursor: pointer;
 }
-
-.disablebutton{
-    color: #FFFFFF;
-    background-color: red;
-    cursor: pointer;
-    font-size: 24px;
-    border: 1px solid transparent;
-    border-radius: 2px;
+.registerbutton:hover{
+    background-color: #2b8774;
 }

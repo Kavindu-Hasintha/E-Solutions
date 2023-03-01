@@ -1,12 +1,9 @@
 import React from "react";
 import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
-import Header from "../../components/Header";
 import "./index.css";
 import { WiTime9 } from "react-icons/wi";
 const Team = () => {
@@ -63,7 +60,7 @@ const Team = () => {
     <Box m="20px">
       <Box display="flex" justifyContent="space-between" alignItems="center">
         {/* <Header title="Client Details"/> */}
-        <h1 className="header1">ASSIGNMENT</h1>
+        <h1 className="header1" style={{textAlign:"center"}}>ASSIGNMENT</h1>
       </Box>
       <Box
         m="8px 0 0 0"
