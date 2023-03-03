@@ -179,6 +179,7 @@
   cursor: pointer;
   background-color: rgb(215, 211, 211);
   vertical-align: middle;
+  margin-left: 0%;
 }
 
 .toggle input {
