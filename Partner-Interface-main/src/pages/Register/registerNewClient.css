@@ -1,5 +1,10 @@
+.inputtag{
+    color: grey;
+    border: "1px solid red";
+}
 .inputtags{
     color: grey;
+    width: 100%;
 }
 .registerbutton{
     color: #FFFFFF;

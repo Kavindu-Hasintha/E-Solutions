@@ -3,7 +3,7 @@ import { Typography, Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import "./ClientDetails.css";
 import logo from "../Images/logo192.png";
-
+import profilephoto from "../Images/65342 png.png";
 const ClientBox = ({
   first_name,
   last_name,
@@ -35,7 +35,7 @@ const ClientBox = ({
         <div>
           <img
             className="IMG"
-            src={logo}
+            src={profilephoto}
             alt="Photo"
             width="30"
             height="30"

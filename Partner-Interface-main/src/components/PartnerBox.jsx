@@ -3,7 +3,7 @@ import { Typography, Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import "./ClientDetails.css";
 import logo from "../Images/logo192.png";
-
+import profilephoto from "../Images/65342 png.png";
 const PartnerBox = ({ first_name, last_name, email, mobile_no }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -29,7 +29,7 @@ const PartnerBox = ({ first_name, last_name, email, mobile_no }) => {
         <div>
           <img
             className="IMG"
-            src={logo}
+            src={profilephoto}
             alt="Photo"
             width="30"
             height="30"

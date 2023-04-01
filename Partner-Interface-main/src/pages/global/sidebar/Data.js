@@ -1,6 +1,8 @@
 import { ApiPath } from "../../../API/ApiPath";
 import React, { useState, Component } from "react";
-import { Api } from "@mui/icons-material";
+import { Api, Margin } from "@mui/icons-material";
+import { textAlign } from "@mui/system";
+import "./Data.css";
 // import FetchCategories from "./data";
 // import  ApiPath  from "../../API/ApiPath";
 
@@ -36,10 +38,12 @@ class NameUser extends Component{
 
     return (
       <div
-        style={{
-          paddingTop: "10px",
-          fontSize: "1rem",
-        }}
+        className="name"
+        // style={{
+        //   paddingTop: "2px",
+        //   fontSize: "20px",
+        //   marginLeft:"50%",
+        // }}
       >
         {name}
       </div>

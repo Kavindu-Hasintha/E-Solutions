@@ -91,6 +91,7 @@ class AllPartnerDetails extends Component {
                     cursor: "pointer",
                     marginRight: "20px",
                     border: "1px solid #1ab394",
+                    borderRadius: "2px"
                   }}
                 >
                   {number}

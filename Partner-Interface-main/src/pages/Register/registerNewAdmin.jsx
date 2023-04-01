@@ -187,10 +187,11 @@ class RegisterNewAdmin extends Component {
                 margin: "0px auto",
                 marginTop: "5%",
                 fontSize: "24px",
+                // border:"1px solid black",
               }}
             >
               <tr style={{ marginBottom: "20px", marginBottom: "200px" }}>
-                <td style={{ marginRight: "20px" }}>
+                <td style={{ marginRight: "20px"}}>
                   <input
                     type="text"
                     id="firstName"
@@ -325,14 +326,20 @@ class RegisterNewAdmin extends Component {
               <tr>
                 <td>
                   <input
-                    type="text"
+                    type="text"                  
                     id="DoB"
                     name="dob"
                     value={this.state.dob}
                     onChange={handleInputChange}
-                    placeholder="Date of Birth (yyyy-mm-dd)"
+                    placeholder="Date Of Birth (yyyy-mm-dd)"
                     className="inputtags"
                   />
+                  {/* <label style={{ color: "grey" }}>Date Of Birth</label>
+                  <input
+                    type="date"
+                    placeholder="hkjfdfdgh"
+                    className="inputtags"
+                  ></input> */}
                 </td>
                 <td>
                   {" "}
@@ -349,6 +356,12 @@ class RegisterNewAdmin extends Component {
                     placeholder="Joined Date (yyyy-mm-dd)"
                     className="inputtags"
                   />
+                  {/* <label style={{ color: "grey" }}>Date Of Birth</label>
+                  <input
+                    type="date"
+                    placeholder="hkjfdfdgh"
+                    className="inputtags"
+                  ></input> */}
                 </td>
               </tr>
 
