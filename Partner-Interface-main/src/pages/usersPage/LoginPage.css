@@ -37,3 +37,27 @@
 .help:focus {
   outline-color: #2b8774;
 }
+
+
+.google-login-btn:hover {
+  background-color: rgb(38, 35, 112);
+}
+
+.google-login-btn {
+  background-color: rgb(255, 99, 71) !important;
+  width: 80% !important;
+ 
+  color : rgb(255, 255, 255) !important;
+  padding: 15px 20px !important;
+  margin: 20px 35px  !important;
+  border: none    !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  display: flex !important;
+ 
+  justify-content: center   !important;; 
+  gap: 10px !important;
+  /* Add !important to override default styles */
+  
+}

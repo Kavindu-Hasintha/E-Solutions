@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using config_service.Models;
+using config_service.Models.Authontication;
 
 namespace config_service.Controllers
 {
@@ -21,13 +22,13 @@ namespace config_service.Controllers
         public JsonResult Get()
         {
             string q = @"select id, username, password, pro_id from login";
-            DataTable table= new DataTable();
+            DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
             SqlDataReader myReader;
-            using(SqlConnection myCon = new SqlConnection(sqlDataSource))
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
                 myCon.Open();
-                using(SqlCommand myCommand = new SqlCommand(q, myCon)) 
+                using (SqlCommand myCommand = new SqlCommand(q, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
@@ -41,16 +42,16 @@ namespace config_service.Controllers
         // Login API (2023/01/23)
         [HttpPost]
         [Route("Login")]
-        public JsonResult Login (Login ln)
+        public JsonResult Login(Login ln)
         {
             string q = @"select pro_id, desig_id from login where username = @username and password = @password";
-            DataTable table= new DataTable();
+            DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
                 myCon.Open();
-                using(SqlCommand myCommand = new SqlCommand(q, myCon))
+                using (SqlCommand myCommand = new SqlCommand(q, myCon))
                 {
                     myCommand.Parameters.AddWithValue("@username", ln.username);
                     myCommand.Parameters.AddWithValue("@password", ln.password);
@@ -73,7 +74,7 @@ namespace config_service.Controllers
                 */
                 return new JsonResult(table);
             }
-            
+
         }
 
         // Add Login Details API (2023/02/28)

@@ -3,6 +3,15 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ApiPath } from "../../API/ApiPath";
 import "./LoginPage.css";
+import {FaGoogle} from "react-icons/fa";
+import { GoogleLogin } from 'react-google-login';
+
+const responseGoogle = (response) => {
+  console.log(response);
+
+};
+
+const CustomGoogleIcon = () => <FaGoogle />;
 const initialState = {
   username: "",
   password: "",
@@ -20,7 +29,7 @@ const LoginPage = (props) => {
     console.log("Password = " + password);
 
     if (!username || !password) {
-      toast.error("Please fill all the fields!");
+   toast.error("Please fill all the fields!");
     } else {
       fetch(ApiPath.API_URL + "Login/Login", {
         method: "POST",
@@ -159,14 +168,31 @@ const LoginPage = (props) => {
                   fontSize: "1rem",
                 }}
               />
+
+             
+               
+              
             </form>
+         
+        
+       
+     
+        <GoogleLogin 
+          clientId="1026598951271-3t528r0r66mpp59e51j5jrtv3laqree3.apps.googleusercontent.com"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          render={renderProps => (
+            <button onClick={renderProps.onClick} className="google-login-btn">
+              <CustomGoogleIcon /> Log in with Google
+            </button>
+          )}
+        
+          cookiePolicy={'single_host_origin'}
+        />
+     
           </div>
 
-          <div>
-            <a href="./help" className="help">
-              Forgot Password
-            </a>
-          </div>
+         
         </div>
       </div>
 

@@ -3,7 +3,10 @@ import "./clientprofilemanagement.css";
 
 const ClientProfileManagment = () => {
   return (
-    <div>
+    <article className="br3  ba b--black-10 mv4 w-100 w-100-m w-25-l mw7 shadow-1 center" style={{Color:'silver'}}>
+    <main className="pa4 black-80">
+ <div className="measure" >
+   
       <h1 style={{ color: "Black", textAlign: "center" }}>
         Client Profile Management
       </h1>
@@ -57,11 +60,12 @@ const ClientProfileManagment = () => {
           <tr> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
           <tr>
             <td>
-            <button className="editbutton">Edit</button>
-            <button className="savebutton">Save</button>
+            <button className="  b ph3 pv2 input-reset ba b--black  grow pointer f6 dib"   style={{backgroundColor:'#1ab394'}}>Edit</button>
+            
             </td>
-            <td></td>
-            <button className="disablebutton">Disable</button>
+            
+            <td><button className="b ph3 pv2 input-reset ba b--black bg-green grow pointer f6 dib" style={{backgroundColor:'#1ab394'}}>Save</button></td>
+            <td><button className="b ph3 pv2 input-reset ba b--black bg-red grow pointer f6 dib" >Disable</button></td>
           </tr>
         </table>
         {/* <div className="buttons">
@@ -71,6 +75,8 @@ const ClientProfileManagment = () => {
         </div> */}
       </div>
     </div>
+    </main>
+    </article>
   );
 };
 

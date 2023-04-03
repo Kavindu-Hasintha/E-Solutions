@@ -1,6 +1,7 @@
 import React, { useState, Component } from "react";
 import { toast } from "react-toastify";
 import { ApiPath } from "../../API/ApiPath";
+import 'tachyons';
 
 class RegisterNewAdmin extends Component {
   constructor(props) {
@@ -175,8 +176,10 @@ class RegisterNewAdmin extends Component {
     };
 
     return (
-      <div>
-        <h1 style={{ color: "Black", textAlign: "center" }}>
+      <article className="br3  ba b--black-10 mv4 w-100 w-100-m w-25-l mw7 shadow-1 center" style={{Color:'silver'}}>
+         <main className="pa4 black-80">
+      <div className="measure" >
+        <h1 className="f1 fw6 ph0 mh0" >
           Register New Admin
         </h1>
         <div>
@@ -371,6 +374,8 @@ class RegisterNewAdmin extends Component {
           </form>
         </div>
       </div>
+    </main>
+      </article>
     );
   }
 }

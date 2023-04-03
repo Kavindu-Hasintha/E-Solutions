@@ -125,7 +125,10 @@ class RegisterNewClient extends Component {
     };
 
     return (
-      <div>
+      <article className="br3  ba b--black-10 mv4 w-100 w-100-m w-25-l mw7 shadow-1 center" style={{Color:'silver'}}>
+    <main className="pa4 black-80">
+ <div className="measure" >
+      
         <h1 style={{ color: "Black", textAlign: "center" }}>
           Register New Client
         </h1>
@@ -280,8 +283,10 @@ class RegisterNewClient extends Component {
           </form>
         </div>
       </div>
+      </main>
+      </article>
     );
-  }
+}
 }
 
 export default RegisterNewClient;
