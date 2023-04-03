@@ -2,25 +2,27 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Data;
+using config_service.Models;
 
 namespace config_service.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DepartmentController : ControllerBase
+    public class ProjectController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public DepartmentController(IConfiguration configuration)
+
+        public ProjectController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        // Get All departments (2023/02/25)
+        // Get Project Details for particular partner
         [HttpGet]
-        [Route("Departments")]
-        public JsonResult Departments()
+        [Route("ProjectDetails")]
+        public JsonResult ProjectDetails(int id)
         {
-            string q = @"select * from department";
+            string q = @"select id, p_name, status, progress, created_at from project where pro_id = @Id";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
             SqlDataReader myReader;
@@ -29,22 +31,22 @@ namespace config_service.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(q, myCon))
                 {
+                    myCommand.Parameters.AddWithValue("@Id", id);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
                     myCon.Close();
                 }
             }
-
             return new JsonResult(table);
         }
 
-        // Get particular department name (2023/03/22)
-        [HttpGet]
-        [Route("DeptName")]
-        public JsonResult DeptName(int id)
+        // Add project
+        [HttpPost]
+        [Route("AddProject")]
+        public JsonResult AddProject(Project p)
         {
-            string q = @"select dep_name from department where dep_id = @dID";
+            string q = @"insert into project (pro_id, p_name, status, progress) values (@pId, @pName, @status, @progress)";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
             SqlDataReader myReader;
@@ -53,16 +55,19 @@ namespace config_service.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(q, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@dID", id);
+                    myCommand.Parameters.AddWithValue("@pId", p.pro_id);
+                    myCommand.Parameters.AddWithValue("@pName", p.p_name);
+                    myCommand.Parameters.AddWithValue("@status", p.status);
+                    myCommand.Parameters.AddWithValue("@progress", p.progress);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
                     myCon.Close();
                 }
-            }
 
-            return new JsonResult(table);
+                return new JsonResult(1);
+            }
         }
     }
 }

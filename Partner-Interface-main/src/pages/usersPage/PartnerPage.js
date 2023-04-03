@@ -18,6 +18,7 @@ import Project from "../project";
 import Assignment from "../assignment";
 import Smtp from "../smpt";
 import ClientDetailsnew from "../clientDetails/ClientDeatailsnew";
+import Profile from "../profile/Profile";
 
 const PartnerPage = (props) => {
   const [theme, colorMode] = useMode();
@@ -43,6 +44,7 @@ const PartnerPage = (props) => {
                 <Route path="project" element={<Project />} />
                 <Route path="assignment" element={<Assignment />} />
                 <Route path="smtp" element={<Smtp />} />
+                <Route path="myProfile" element={<Profile />} />
               </Routes>
             </main>
           </div>

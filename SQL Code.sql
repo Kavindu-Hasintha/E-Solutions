@@ -77,6 +77,7 @@ insert into login (username, password, pro_id, desig_id) values
 	('tharindu@gmail.com', 'tharindu', 4, 3);
 
 select * from login;
+select * from profile;
 
 create table client_detail(
 	client_id int not null identity(1, 1),
@@ -126,7 +127,30 @@ insert into supervisor (pro_id, sup_id) values (2, 1), (3, 2), (4, 2);
 insert into supervisor (pro_id, sup_id) values (19, 2);
 select * from supervisor;
 
+******************************************************************************************
 
+create table project (
+	id int not null IDENTITY(1, 1),
+	pro_id int not null,
+	p_name varchar(150),
+	status int,
+	progress int,
+	created_at date DEFAULT GETDATE(), 
+	constraint project_fk_pro_id foreign key(pro_id) references profile(pro_id),
+	constraint project_pk primary key(id)
+);
+
+insert into project (pro_id, p_name, status, progress) values
+	(3, 'A Company', 1, 50),
+	(3, 'B Company', 0, 65);
+
+insert into project (pro_id, p_name, status, progress) values
+	(4, 'R Company', 1, 95),
+	(4, 'T Company', 0, 40);
+
+select * from project;
+delete from project;
+drop table project;
 
 *****************************************************************************************************************
 *****************************************************************************************************************
