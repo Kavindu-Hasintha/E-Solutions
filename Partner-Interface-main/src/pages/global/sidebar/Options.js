@@ -72,6 +72,11 @@ class Options extends Component {
         title: "Client Profile Management",
         to: "clientprofilemanagement",
       },
+      {
+        id: 9,
+        title: "My Profile",
+        to: "myProfile",
+      },
     ];
     const adminOptions = [
       {
@@ -88,6 +93,11 @@ class Options extends Component {
         id: 3,
         title: "My Clients",
         to: "newClient",
+      },
+      {
+        id: 4,
+        title: "My Profile",
+        to: "myProfile",
       },
     ];
 
@@ -116,6 +126,11 @@ class Options extends Component {
         id: 5,
         title: "SMTP",
         to: "smtp",
+      },
+      {
+        id: 6,
+        title: "My Profile",
+        to: "myProfile",
       },
     ];
 
@@ -153,7 +168,7 @@ class Options extends Component {
       partnerOptions,
       adminOptions,
       selected,
-      setSelected,
+      // setSelected,
     } = this.state;
     if (!DataisLoaded)
       return (
@@ -171,7 +186,7 @@ class Options extends Component {
                 to={menuItem.to}
                 icon={<BsFillGridFill />}
                 selected={selected}
-                setSelected={selected}
+                // setSelected={selected}
               />
             ))}
           </div>
@@ -185,7 +200,7 @@ class Options extends Component {
                 to={menuItem.to}
                 icon={<BsFillGridFill />}
                 selected={selected}
-                setSelected={setSelected}
+                // setSelected={setSelected}
               />
             ))}
           </div>
@@ -199,7 +214,7 @@ class Options extends Component {
                 to={menuItem.to}
                 icon={<BsFillGridFill />}
                 selected={selected}
-                setSelected={setSelected}
+                // setSelected={setSelected}
               />
             ))}
           </div>

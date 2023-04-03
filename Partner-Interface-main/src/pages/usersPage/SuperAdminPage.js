@@ -12,6 +12,7 @@ import RegisterNewAdmin from "../Register/registerNewAdmin";
 import AdminDetails from "../getAllDetails/AdminDetails";
 import AllPartnerDetails from "../getAllDetails/AllPartnerDetails";
 import AllClientDetails from "../getAllDetails/AllClientDetails";
+import Profile from "../profile/Profile";
 
 const SuperAdminPage = (props) => {
   const [theme, colorMode] = useMode();
@@ -47,6 +48,7 @@ const SuperAdminPage = (props) => {
                   path="clientprofilemanagement"
                   element={<ClientProfileManagment />}
                 />
+                <Route path="myProfile" element={<Profile />} />
               </Routes>
             </main>
           </div>

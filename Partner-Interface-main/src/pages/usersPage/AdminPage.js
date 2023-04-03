@@ -7,6 +7,7 @@ import Topbar from "../global/Topbar";
 import AdminDashboard from "../dashboard/AdminDashbord";
 import PartnerDetails from "../partnerDetails/PartnerDetails";
 import NewClient from "../newClient/NewClient";
+import Profile from "../profile/Profile";
 
 const AdminPage = (props) => {
   const [theme, colorMode] = useMode();
@@ -28,6 +29,7 @@ const AdminPage = (props) => {
                 <Route path="" element={<AdminDashboard />} />
                 <Route path="newPartner" element={<PartnerDetails />} />
                 <Route path="newClient" element={<NewClient />} />
+                <Route path="myProfile" element={<Profile />} />
               </Routes>
             </main>
           </div>
