@@ -38,6 +38,7 @@ const MyProSidebar = () => {
         top: 0,
         bottom: 0,
         zIndex: 10000,
+        color:"#fff",
         "& .sidebar": {
           border: "none",
         },
@@ -52,11 +53,11 @@ const MyProSidebar = () => {
           backgroundColor: "transparent !important",
         },
         "& .menu-item:hover": {
-          color: `${colors.blueAccent[500]} !important`,
+          color: `${colors.greenAccent[500]} !important`,
           backgroundColor: "transparent !important",
         },
-        "& .menu-item.active": {
-          color: `${colors.greenAccent[500]} !important`,
+        "& .menu-anchor:focus": {
+          color: "inherit !important",
           backgroundColor: "transparent !important",
         },
       }}
@@ -71,7 +72,7 @@ const MyProSidebar = () => {
           <MenuItem
             icon={
               collapsed && (
-                <FaBars onClick={() => collapseSidebar()} style={{fontSize:"20px"}} />
+                <FaBars onClick={() => collapseSidebar()} style={{fontSize:"20px"}}/>
               // ) : sidebarRTL ? (
               //   <SwitchLeftOutlinedIcon
               //     onClick={() => setSidebarRTL(!sidebarRTL)}
@@ -148,7 +149,7 @@ const MyProSidebar = () => {
                   onMouseLeave={handleMouseLeave}
                 >
                   Menu
-                  <Link to="/" style={{color:"black",textDecoration:"none",fontWeight:"500",width:"110%"}} > {showMessage && message} </Link>
+                  <Link to="/" style={{color:"#1ab394",textDecoration:"none",fontWeight:"500",width:"110%"}} > {showMessage && message} </Link>
                 </b>
               </Box>
             </Box>

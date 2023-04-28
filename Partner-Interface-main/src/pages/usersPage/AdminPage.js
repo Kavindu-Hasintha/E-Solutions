@@ -7,6 +7,7 @@ import Topbar from "../global/Topbar";
 import AdminDashboard from "../dashboard/AdminDashbord";
 import PartnerDetails from "../partnerDetails/PartnerDetails";
 import NewClient from "../newClient/NewClient";
+import NotificationBox from "../../components/NotificationBox";
 
 const AdminPage = (props) => {
   const [theme, colorMode] = useMode();

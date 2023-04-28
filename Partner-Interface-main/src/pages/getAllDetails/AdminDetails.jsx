@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ApiPath } from "../../API/ApiPath";
 import AdminBox from "../../components/AdminBox";
-
+import '../clientDetails/ClientDetails.css';
 class AdminDetails extends Component {
   constructor(props) {
     super(props);
@@ -85,7 +85,8 @@ class AdminDetails extends Component {
                   key={number}
                   id={number}
                   onClick={this.handlePageClick}
-                  className={currentPage === number ? "active" : null}
+                  // className={currentPage === number ? "active" : null}
+                  className="pagenumberbutton"
                   style={{
                     color: "black",
                     cursor: "pointer",

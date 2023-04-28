@@ -11,20 +11,22 @@ const Topbar = () => {
   // const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
   const { toggleSidebar, broken, rtl } = useProSidebar();
+  
   return (
     <Box display="flex" justifyContent="space-between" p={2} className="topbar">
       <Box display="flex">
-        {broken && !rtl && (
+        {/* {broken && !rtl && (
           <IconButton
             sx={{ margin: "0 6 0 2" }}
             onClick={() => toggleSidebar()}
           >
             <MenuOutlinedIcon />
           </IconButton>
-        )}
+        )} */}
         <input
           className="inputbase"
           placeholder="Search for something..."
+
         ></input>
       </Box>
       <Link to="/">

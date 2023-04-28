@@ -40,6 +40,8 @@
   padding: 5px 16px;
   position: relative;
   border-radius: 3px;
+  border: transparent;
+  margin-bottom: 12px;  
 }
 .Notify{
   font-size: 12px;
@@ -55,7 +57,7 @@
   position: absolute;
   top: -8px;
   right: -10px;
-  padding: 2px 7px;
+  padding: 5px 7px;
   border-radius: 50%;
   background: red;
   color: white;
@@ -72,6 +74,7 @@
 }
 .moredetailslink{
   color: #1ab394;
+  text-decoration: none;
 }
 .ViewButton{
   color: #FFFFFF;

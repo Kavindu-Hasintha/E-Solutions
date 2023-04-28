@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NotificationBox from "./components/NotificationBox";
 //import logo from "./logo.svg";
 //import "./App.css";
 
@@ -53,7 +54,7 @@ function App() {
             </Protected>
           }
         />
-
+        {/* <Route path="notifications" element={<NotificationBox />} /> */}
         {/* <Route exact path="/" element={<LoginPage />} />
         <Route path="/superadmin/:id/*" element={<SuperAdminPage />} />
         <Route path="/admin/:id/*" element={<AdminPage />} />

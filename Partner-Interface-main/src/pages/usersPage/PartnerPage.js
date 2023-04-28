@@ -13,11 +13,11 @@ import { Routes, Route } from "react-router-dom";
 import { MyProSidebarProvider } from "../global/sidebar/sidebarContext";
 import Topbar from "../global/Topbar";
 import Partnerdashboard from "../dashboard/PartnerDashboard";
-import ClientDetails from "../clientDetails/ClientDetails";
 import Project from "../project";
 import Assignment from "../assignment";
 import Smtp from "../smpt";
 import ClientDetailsnew from "../clientDetails/ClientDeatailsnew";
+import NotificationBox from "../../components/NotificationBox";
 
 const PartnerPage = (props) => {
   const [theme, colorMode] = useMode();
@@ -43,6 +43,7 @@ const PartnerPage = (props) => {
                 <Route path="project" element={<Project />} />
                 <Route path="assignment" element={<Assignment />} />
                 <Route path="smtp" element={<Smtp />} />
+                <Route path="clientDetails/notifications" element={<NotificationBox/>}/>
               </Routes>
             </main>
           </div>

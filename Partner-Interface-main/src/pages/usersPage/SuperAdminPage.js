@@ -13,6 +13,7 @@ import AdminDetails from "../getAllDetails/AdminDetails";
 import AllPartnerDetails from "../getAllDetails/AllPartnerDetails";
 import AllClientDetails from "../getAllDetails/AllClientDetails";
 import Access from "../../components/AccessTable";
+import NotificationBox from "../../components/NotificationBox";
 
 const SuperAdminPage = (props) => {
   const [theme, colorMode] = useMode();
@@ -51,6 +52,9 @@ const SuperAdminPage = (props) => {
                 
                 <Route path="registernewpartner/access"
                  element={<Access/>}/>
+                 <Route path="allclients/notifications" element={<NotificationBox/>}/>
+                 <Route path="allpartners/notifications" element={<NotificationBox/>}/>
+                 <Route path="alladmins/notifications" element={<NotificationBox/>}/>
               </Routes>
             </main>
           </div>

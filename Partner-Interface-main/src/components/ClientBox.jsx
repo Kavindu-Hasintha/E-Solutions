@@ -4,6 +4,7 @@ import { tokens } from "../theme";
 import "./ClientDetails.css";
 import logo from "../Images/logo192.png";
 import profilephoto from "../Images/65342 png.png";
+import { NavLink } from "react-router-dom";
 const ClientBox = ({
   first_name,
   last_name,
@@ -24,10 +25,12 @@ const ClientBox = ({
             <b className="head2">hSenid Business</b>
           </div>
           <div className="Notify">
-            <a href="#" className="notification">
-              <span>Notify</span>
-              <span class="badge">3</span>
-            </a>
+          <NavLink to={"notifications"}>
+              <button className="notification">
+                <span>Notifications</span>
+                <span class="badge">2</span>
+              </button>
+            </NavLink>
           </div>
         </p>
       </div>
