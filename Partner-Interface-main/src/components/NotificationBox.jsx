@@ -1,3 +1,5 @@
+import React from "react";
+import "./NotificationBox.css";
 const NotificationBox = () => {
     return ( 
         <div style={{border:"1px solid grey",color:"black"}}>
@@ -9,7 +11,7 @@ const NotificationBox = () => {
                 Log File 321
                 <br/>
                 <br/>
-                <button style={{color:"#FFF",backgroundColor:"#1ab394",border:"transparent",borderRadius:"2px"}}>View Dashboard</button>
+                <button className="ViewButton1">View Dashboard</button>
             </div>
             <div style={{backgroundColor:"#cdd5d3",fontWeight:"bolder"}}>
                 2 Days Ago
