@@ -2,12 +2,6 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import NotificationBox from "./components/NotificationBox";
-//import logo from "./logo.svg";
-//import "./App.css";
-
-// Testing Github
-
 import Protected from "./Protected";
 import LoginPage from "./pages/usersPage/LoginPage";
 import SuperAdminPage from "./pages/usersPage/SuperAdminPage";

@@ -27,18 +27,7 @@ const PartnerPage = (props) => {
   const logOut = () => {
     props.onLogout();
   };
-
-  // const handleSearch = () => {
-  //   const searchResult = window.find(searchTerm);
-  //   if (searchResult) {
-  //     alert(`Found "${searchTerm}" in the window.`);
-  //   } else {
-  //     alert(`Could not find "${searchTerm}" in the window.`);
-  //   }
-  // };
-
   return (
-    // <ColorModeContext.Provider value={colorMode}>
     <div className="whole">
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -46,19 +35,9 @@ const PartnerPage = (props) => {
           <div style={{ height: "100%", width: "100%" }}>
             <main>
               <Topbar onlogOut={logOut} />
-              {/* <div>
-                <input
-                  type="text"
-                  placeholder="Enter search term"
-                  value={searchTerm}
-                  onChange={(event) => setSearchTerm(event.target.value)}
-                />
-                <button onClick={handleSearch}>Search</button>
-              </div> */}
               <Routes>
                 <Route path="/" element={<Partnerdashboard />} />
                 <Route path="clientDetails" element={<ClientDetailsnew />} />
-                {/* <Route path="clientDetails" element={<ClientDetails />} /> */}
                 <Route path="project" element={<Project />} />
                 <Route path="assignment" element={<Assignment />} />
                 <Route path="smtp" element={<Smtp />} />
@@ -72,7 +51,6 @@ const PartnerPage = (props) => {
         </MyProSidebarProvider>
       </ThemeProvider>
     </div>
-    // </ColorModeContext.Provider>
   );
 };
 
