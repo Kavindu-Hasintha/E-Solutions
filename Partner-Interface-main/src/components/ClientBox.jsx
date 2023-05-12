@@ -10,7 +10,8 @@ const ClientBox = ({
   last_name,
   designation,
   email,
-  mobile_no
+  mobile_no,
+  profile_photo
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
