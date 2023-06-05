@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { ApiPath } from "../../API/ApiPath";
+import "./Profile.css";
 
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
@@ -8,12 +10,27 @@ import { toast } from "react-toastify";
 
 import "tachyons";
 
+import ChangePassword from "../../components/ChangePassword/ChangePassword";
+
 const Profile = () => {
   const [urlId, setUrlId] = useState(window.location.pathname.split("/"));
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    pro_id: 0,
+    pro_first_name: "",
+    pro_last_name: "",
+    pro_email: "",
+    pro_dept_id: 0,
+    pro_desig_id: 0,
+    pro_dob: "",
+    pro_gender: "",
+    pro_mobile: "",
+    pro_joined_date: "",
+    pro_updated_time: "",
+  });
   const [depart, setDepart] = useState("");
   const [desig, setDesig] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
+  const navigate = useNavigate();
 
   const fetchData = () => {
     fetch(ApiPath.API_URL + "Profile/PartnerProfile?id=" + urlId[2])
@@ -23,7 +40,11 @@ const Profile = () => {
         fetch(ApiPath.API_URL + "Department/DeptName?id=" + json[0].pro_dept_id)
           .then((res) => res.json())
           .then((json2) => {
-            setDepart(json2[0].dep_name);
+            if (json[0].pro_desig_id === 1) {
+              setDepart("No Department");
+            } else {
+              setDepart(json2[0].dep_name);
+            }
             fetch(
               ApiPath.API_URL +
                 "Designation/DesigName?id=" +
@@ -78,14 +99,22 @@ const Profile = () => {
                 body: JSON.stringify(data),
               })
                 .then((res) => res.json())
-                .then((result) => {
-                  if (result === 1) {
-                    toast.success("Registration Success");
-                    fetchData();
-                  } else {
-                    toast.error("Registration Failed");
+                .then(
+                  (result) => {
+                    if (result === 1) {
+                      toast.success("Successfully Updated");
+                      fetchData();
+                    } else {
+                      toast.error("Updated Failed");
+                    }
+                  },
+                  (error) => {
+                    toast.error(
+                      "Something wrong in the response that coming from API!"
+                    );
+                    console.log(error);
                   }
-                });
+                );
 
               setIsDisabled(true);
             },
@@ -105,22 +134,23 @@ const Profile = () => {
 
   return (
     <div>
-      <h1 style={{ color: "Black", textAlign: "center" }}>
-        My Profile Management
-      </h1>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <table
-            style={{
-              alignContent: "center",
-              margin: "0px auto",
-              marginTop: "5%",
-              fontSize: "24px",
-            }}
-          >
-            <tbody>
-              <tr style={{ marginBottom: "20px", marginBottom: "200px" }}>
-                <td style={{ marginRight: "20px" }}>
+      <article
+        className="br3 ba b--black-10 shadow-1 center"
+        style={{
+          Color: "silver",
+          margin: "20px auto",
+          width: "50%",
+          padding: "20px 0",
+        }}
+      >
+        <div>
+          <div>
+            <h1 className="heading">My Profile Management</h1>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <form onSubmit={handleSubmit}>
+              <div className="row_box">
+                <div className="row_box_left">
                   <input
                     type="text"
                     name="pro_first_name"
@@ -131,9 +161,8 @@ const Profile = () => {
                     disabled={isDisabled}
                     title="First Name"
                   />
-                </td>
-                <td />
-                <td>
+                </div>
+                <div className="row_box_right">
                   <input
                     type="text"
                     name="pro_last_name"
@@ -144,16 +173,10 @@ const Profile = () => {
                     disabled={isDisabled}
                     title="Last Name"
                   />
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="3">
-                  {""}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </td>
-              </tr>
-              <tr>
-                <td>
+                </div>
+              </div>
+              <div className="row_box">
+                <div className="row_box_left">
                   <input
                     type="email"
                     name="pro_email"
@@ -164,50 +187,36 @@ const Profile = () => {
                     disabled={isDisabled}
                     title="Email"
                   />
-                </td>
-                <td />
-                <td>
+                </div>
+                <div className="row_box_right">
                   <input
                     type="text"
                     name="depart"
                     defaultValue={depart}
-                    // onChange={handleInputChange}
                     placeholder="Department"
                     className="inputtags"
                     disabled
                     title="Department"
                   />
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="3">
-                  {""}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </td>
-              </tr>
-              <tr>
-                <td>
+                </div>
+              </div>
+              <div className="row_box">
+                <div className="row_box_left">
                   <input
                     type="text"
                     name="desig"
                     defaultValue={desig}
-                    // onChange={handleInputChange}
                     placeholder="Designation"
                     className="inputtags"
                     disabled
                     title="Designation"
                   />
-                </td>
-                <td>
-                  {""}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </td>
-                <td>
+                </div>
+                <div className="row_box_right">
                   <input
                     type="text"
                     name="pro_dob"
-                    value={data.pro_dob}
+                    value={data.pro_dob.substring(0, 10)}
                     onChange={handleInputChange}
                     placeholder="Date of Birth (yyyy-mm-dd)"
                     className="inputtags"
@@ -215,32 +224,24 @@ const Profile = () => {
                     title="Date of Birth"
                     maxLength="10"
                   />
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="3">
-                  {""}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </td>
-              </tr>
-              <tr>
-                <td>
+                </div>
+              </div>
+              <div className="row_box">
+                <div className="row_box_left">
                   <select
                     id="gender"
                     name="pro_gender"
                     value={data.pro_gender}
                     onChange={handleInputChange}
-                    style={{ width: "100%", height: "40px" }}
-                    className="inputtags"
+                    className="input_select"
                     disabled={isDisabled}
                     title="Gender"
                   >
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
-                </td>
-                <td />
-                <td>
+                </div>
+                <div className="row_box_right">
                   <input
                     type="text"
                     name="pro_mobile"
@@ -251,75 +252,67 @@ const Profile = () => {
                     disabled={isDisabled}
                     title="Mobile No"
                   />
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="3">
-                  {""}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </td>
-              </tr>
-              <tr>
-                <td>
+                </div>
+              </div>
+              <div className="row_box">
+                <div className="row_box_left">
                   <input
                     type="text"
                     name="pro_joined_date"
-                    defaultValue={data.pro_joined_date}
-                    // onChange={handleInputChange}
+                    defaultValue={data.pro_joined_date.substring(0, 10)}
                     placeholder="Joined Date"
                     className="inputtags"
                     disabled
                     title="Joined Date"
                   />
-                </td>
-                <td>
-                  {""}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </td>
-                <td>
+                </div>
+                <div className="row_box_right">
                   <input
                     type="text"
                     name="pro_updated_time"
-                    // onChange={handleInputChange}
-                    value={data.pro_updated_time}
+                    value={
+                      data.pro_updated_time.substring(0, 10) +
+                      " " +
+                      data.pro_updated_time.substring(11, 19)
+                    }
                     placeholder="Updated Time"
                     className="inputtags"
                     disabled
                     title="Last Updated Time"
                   />
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="3">
-                  {""}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </td>
-              </tr>
-              <tr>
-                <td>
+                </div>
+              </div>
+              <div className="row_box row_buttons">
+                <div className="buttons">
                   <button
                     type="button"
-                    className="editbutton"
+                    className="button_edit"
                     onClick={enbleEditing}
-                    style={{ padding: "5px 10px" }}
                   >
                     Edit
                   </button>
                   <button
                     type="submit"
-                    className="savebutton"
-                    style={{ padding: "5px 10px" }}
+                    className="button_save"
+                    disabled={isDisabled}
                   >
                     Save
                   </button>
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-      </div>
+                </div>
+                <div className="buttons">
+                  <button
+                    type="button"
+                    className="button_password"
+                    onClick={() => navigate("changePassword")}
+                  >
+                    Change Password
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </article>
     </div>
   );
 };

@@ -102,7 +102,69 @@ namespace config_service.Controllers
                 }
             }
             return new JsonResult(1);
+        }
 
+        // Check current password is matching or not (2023/06/04)
+        [HttpPost]
+        [Route("CheckPassword")]
+        public JsonResult CheckPassword(Login ln)
+        {
+            string q = @"select pro_id from login where pro_id = @pId and password = @password";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(q, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@pId", ln.pro_id);
+                    myCommand.Parameters.AddWithValue("@password", ln.password);
+
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            if (table.Rows.Count == 0)
+            {
+                return new JsonResult(-1);
+            }
+            else
+            {
+                return new JsonResult(1);
+            }
+        }
+
+        // Change Password API (2023/06/04)
+        [HttpPost]
+        [Route("ChangePassword")]
+        public JsonResult ChangePassword(Login ln)
+        {
+            string q = @"update login set password = @pword where pro_id = @pId";
+            int numberOfRowsEffected = 0;
+            string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(q, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@pId", ln.pro_id);
+                    myCommand.Parameters.AddWithValue("@pword", ln.password);
+
+                    numberOfRowsEffected = myCommand.ExecuteNonQuery();
+                    myCon.Close();
+                }
+            }
+            if (numberOfRowsEffected == 1)
+            {
+                return new JsonResult(1);
+            }
+            else
+            {
+                return new JsonResult(-1);
+            }
         }
     }
 }

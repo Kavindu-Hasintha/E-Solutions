@@ -1,24 +1,16 @@
 import React from "react";
-/*
-const PartnerPage = () => {
-  return <div>Partner Page</div>;
-};
 
-export default PartnerPage;
-*/
-
-import { ColorModeContext, useMode } from "../../theme";
+import { useMode } from "../../theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import { MyProSidebarProvider } from "../global/sidebar/sidebarContext";
 import Topbar from "../global/Topbar";
 import Partnerdashboard from "../dashboard/PartnerDashboard";
-import ClientDetails from "../clientDetails/ClientDetails";
 import Project from "../project";
 import Assignment from "../assignment";
 import Smtp from "../smpt";
-import ClientDetailsnew from "../clientDetails/ClientDeatailsnew";
-import Profile from "../profile/Profile";
+import ConsoleManagement from "../consoleDashboard/ConsoleManagement";
+import ProfileManagement from "../profile/ProfileManagement";
 
 const PartnerPage = (props) => {
   const [theme, colorMode] = useMode();
@@ -29,7 +21,6 @@ const PartnerPage = (props) => {
   };
 
   return (
-    // <ColorModeContext.Provider value={colorMode}>
     <div className="whole">
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -39,20 +30,17 @@ const PartnerPage = (props) => {
               <Topbar onlogOut={logOut} />
               <Routes>
                 <Route path="/" element={<Partnerdashboard />} />
-                <Route path="clientDetails" element={<ClientDetailsnew />} />
-                {/* <Route path="clientDetails" element={<ClientDetails />} /> */}
+                <Route path="clientDetails/*" element={<ConsoleManagement />} />
                 <Route path="project" element={<Project />} />
                 <Route path="assignment" element={<Assignment />} />
                 <Route path="smtp" element={<Smtp />} />
-                <Route path="myProfile" element={<Profile />} />
+                <Route path="myProfile/*" element={<ProfileManagement />} />
               </Routes>
             </main>
           </div>
         </MyProSidebarProvider>
       </ThemeProvider>
     </div>
-
-    // </ColorModeContext.Provider>
   );
 };
 

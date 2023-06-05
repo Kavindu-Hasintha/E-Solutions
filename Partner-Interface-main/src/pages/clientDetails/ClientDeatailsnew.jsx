@@ -11,7 +11,7 @@ class ClientDetails extends Component {
       DataisLoaded: false,
       va: window.location.pathname.split("/"),
       currentPage: 1,
-      itemsPerPage: 6 // number of items to be displayed per page
+      itemsPerPage: 6, // number of items to be displayed per page
     };
   }
 
@@ -32,7 +32,7 @@ class ClientDetails extends Component {
         this.setState({
           clients: json,
           DataisLoaded: true,
-          currentPage: page
+          currentPage: page,
         });
       });
   }
@@ -55,11 +55,7 @@ class ClientDetails extends Component {
       );
 
     const pageNumbers = [];
-    for (
-      let i = 1;
-      i <= Math.ceil(clients.length / itemsPerPage);
-      i++
-    ) {
+    for (let i = 1; i <= Math.ceil(clients.length / itemsPerPage); i++) {
       pageNumbers.push(i);
     }
 
@@ -80,6 +76,7 @@ class ClientDetails extends Component {
           {currentItems.map((client) => (
             <ol key={client.client_id} style={{ padding: "0" }}>
               <ClientBox
+                client_id={client.client_id}
                 first_name={client.first_name}
                 last_name={client.last_name}
                 designation={client.designation}
@@ -97,12 +94,15 @@ class ClientDetails extends Component {
                   key={number}
                   id={number}
                   onClick={this.handlePageClick}
-                  className={
-                    currentPage === number ? "active" : null
-                  }
-                  style={{color:"black",cursor:"pointer",marginRight:"20px",border:"1px solid #1ab394"}}
+                  className={currentPage === number ? "active" : null}
+                  style={{
+                    color: "black",
+                    cursor: "pointer",
+                    marginRight: "20px",
+                    border: "1px solid #1ab394",
+                  }}
                 >
-                  {number} 
+                  {number}
                 </button>
               );
             })}

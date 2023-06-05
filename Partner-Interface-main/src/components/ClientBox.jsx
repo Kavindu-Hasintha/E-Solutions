@@ -1,18 +1,25 @@
 import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Typography, Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import "./ClientDetails.css";
 import logo from "../Images/logo192.png";
 
 const ClientBox = ({
+  client_id,
   first_name,
   last_name,
   designation,
   email,
-  mobile_no
+  mobile_no,
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const navigate = useNavigate();
+
+  const viewDashboard = () => {
+    navigate(client_id + "/console");
+  };
 
   return (
     <div className="Box">
@@ -24,10 +31,12 @@ const ClientBox = ({
             <b className="head2">hSenid Business</b>
           </div>
           <div className="Notify">
-            <a href="#" className="notification">
-              <span>Notify</span>
-              <span class="badge">3</span>
-            </a>
+            <NavLink to={"notifications"}>
+              <button className="notification">
+                <span>Notifications</span>
+                <span class="badge">2</span>
+              </button>
+            </NavLink>
           </div>
         </p>
       </div>
@@ -44,19 +53,27 @@ const ClientBox = ({
         </div>
         <br />
         <div className="Content">
-          Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {first_name} {last_name}
+          Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{" "}
+          {first_name} {last_name}
           <br />
           Designation <span></span> : {designation}
           <br />
-          Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {email}
+          Email
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{" "}
+          {email}
           <br />
           Tel.No. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {mobile_no}
           <br />
-          More details : <a href="https://www.w3schools.com/" className="moredetailslink">View Client</a>
+          More details :{" "}
+          <a href="https://www.w3schools.com/" className="moredetailslink">
+            View Client
+          </a>
         </div>
       </div>
       <div className="Bottom">
-        <button href="#" className="ViewButton">View Dashbord</button>
+        <button href="#" className="ViewButton" onClick={viewDashboard}>
+          View Dashbord
+        </button>
       </div>
     </div>
   );

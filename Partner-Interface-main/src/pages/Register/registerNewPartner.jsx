@@ -1,4 +1,5 @@
 import React, { useState, Component } from "react";
+import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ApiPath } from "../../API/ApiPath";
 
@@ -393,13 +394,15 @@ class RegisterNewPartner extends Component {
               </tr>
               <tr>
                 <td colSpan={3}>
-                  <button
-                    type="submit"
-                    style={{ width: "100%" }}
-                    className="registerbutton"
-                  >
-                    Register
-                  </button>
+                  <NavLink to={"access"}>
+                    <button
+                      type="submit"
+                      style={{ width: "100%" }}
+                      className="registerbutton"
+                    >
+                      Register
+                    </button>
+                  </NavLink>
                 </td>
               </tr>
             </table>

@@ -28,6 +28,7 @@ insert into designation (desig_name) values
 	('Partner');
 
 select * from designation;
+select * from department;
 
 create table profile (
 	pro_id int not null IDENTITY(1, 1),
@@ -56,6 +57,8 @@ insert into profile (pro_first_name, pro_last_name, pro_email, pro_dept_id, pro_
 	('Tharindu', 'Ruwanpathirana', 'tharindu@gmail.com', 1, 3, '2000-04-25', 'Male', '7155236852', '2023-01-01', GETDATE());
 
 select * from profile;
+select * from department;
+select * from designation;
 
 Create table login (
 	id int not null identity(1, 1),
