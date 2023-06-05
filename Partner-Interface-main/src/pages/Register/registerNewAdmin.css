@@ -1,0 +1,17 @@
+/* .table{
+    border-radius: 10px;
+    border: 1px solid black;
+} */
+.WholePage{
+    border: 1px solid #bed5d1;
+    border-radius: 8px;
+    box-shadow: 0 0 2px 2px #747c7b;
+}
+.inputs{
+    border-color: transparent;
+    border-bottom: 1px solid #bdbdbd;;
+}
+.inputs:focus{
+    outline-color: #1ab394;
+    box-shadow: 0 0 5px #1ab394;
+}
