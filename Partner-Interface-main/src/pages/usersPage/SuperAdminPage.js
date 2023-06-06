@@ -12,9 +12,10 @@ import RegisterNewAdmin from "../Register/registerNewAdmin";
 import AdminDetails from "../getAllDetails/AdminDetails";
 import AllPartnerDetails from "../getAllDetails/AllPartnerDetails";
 import AllClientDetails from "../getAllDetails/AllClientDetails";
-import Access from "../../components/AccessTable";
+import ProfileManagement from "../profile/ProfileManagement";
 import NotificationBox from "../../components/NotificationBox/NotificationBox";
-
+import Access from "../../components/AccessTable";
+import ClientProfile from "../../components/ProfileDetails/ClientProfile";
 const SuperAdminPage = (props) => {
   const [theme, colorMode] = useMode();
 
@@ -49,12 +50,29 @@ const SuperAdminPage = (props) => {
                   path="clientprofilemanagement"
                   element={<ClientProfileManagment />}
                 />
-                
-                <Route path="registernewpartner/access"
-                 element={<Access/>}/>
-                 <Route path="allclients/notifications" element={<NotificationBox/>}/>
-                 <Route path="allpartners/notifications" element={<NotificationBox/>}/>
-                 <Route path="alladmins/notifications" element={<NotificationBox/>}/>
+                <Route path="myProfile/*" element={<ProfileManagement />} />
+                <Route path="registernewpartner/access" element={<Access />} />
+                <Route
+                  path="allclients/notifications"
+                  element={<NotificationBox />}
+                />
+                <Route
+                  path="allpartners/notifications"
+                  element={<NotificationBox />}
+                />
+                <Route
+                  path="alladmins/notifications"
+                  element={<NotificationBox />}
+                />
+                <Route
+                path="allclients/moredetails" element={<ClientProfile/>}
+                />
+                <Route
+                path="allpartners/moredetails" element={<ClientProfile/>}
+                />
+                <Route
+                path="alladmins/moredetails" element={<ClientProfile/>}
+                />
               </Routes>
             </main>
           </div>

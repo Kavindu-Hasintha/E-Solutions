@@ -53,9 +53,11 @@ const AdminBox = ({ first_name, last_name, email, mobile_no }) => {
           Tel.No. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {mobile_no}
           <br />
           More details :{" "}
-          <a href="https://www.w3schools.com/" className="moredetailslink">
-            View Admin
-          </a>
+          <NavLink to={"moredetails"}>
+              <a style={{color:"black",textDecoration:"none"}}>
+                More Details
+              </a>
+            </NavLink>
         </div>
       </div>
       <div className="Bottom">

@@ -30,7 +30,7 @@ const MyProSidebar = () => {
   }
 
   return (
-    <Box
+    <Box 
       sx={{
         position: "sticky",
         display: "flex",
@@ -69,10 +69,10 @@ const MyProSidebar = () => {
         image={sidebarImage}
       >
         <Menu iconshape="square">
-          <MenuItem
+          <MenuItem 
             icon={
               collapsed && (
-                <FaBars onClick={() => collapseSidebar()} style={{fontSize:"20px"}}/>
+                <FaBars onClick={() => collapseSidebar()} style={{fontSize:"20px"}} />
               // ) : sidebarRTL ? (
               //   <SwitchLeftOutlinedIcon
               //     onClick={() => setSidebarRTL(!sidebarRTL)}
@@ -88,6 +88,7 @@ const MyProSidebar = () => {
               margin: "10px 0 20px 0",
               // color: colors.grey[100],
             }}
+            
           >
             {!collapsed && (
               <Box
@@ -106,6 +107,7 @@ const MyProSidebar = () => {
                     color: "#fff",
                     borderRadius: "2px",
                     fontSize: "14px",
+                    height:"120%"
                   }}
                   onClick={
                     broken ? () => toggleSidebar() : () => collapseSidebar()
@@ -116,13 +118,14 @@ const MyProSidebar = () => {
                       verticalAlign: "middile",
                       paddingBottom: "5px",
                       fontSize: "20px",
+                      marginTop:"10%"
                     }}
                   />
                 </button>
               </Box>
             )}
           </MenuItem>
-          <MenuItem>
+          <MenuItem >
           {!collapsed && (
               <Box
               alignItems="center"
@@ -135,8 +138,9 @@ const MyProSidebar = () => {
             )}
             </MenuItem>
           {!collapsed && (
-            <Box>
+            <Box >
               <Box
+              
                 style={{ cursor: "pointer" }}
                 marginLeft="70px"
                 marginTop="50px"
@@ -154,7 +158,7 @@ const MyProSidebar = () => {
               </Box>
             </Box>
           )}
-          <Box paddingLeft={collapsed ? undefined : "0%"} fontSize={12}>
+          <Box paddingLeft={collapsed ? undefined : "0%"} fontSize={12} >
             <Options />
           </Box>
         </Menu>
