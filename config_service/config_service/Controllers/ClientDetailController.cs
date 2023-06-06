@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using config_service.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace config_service.Controllers
 {
@@ -18,6 +19,7 @@ namespace config_service.Controllers
         }
 
         // Get Client Details for particular partner (2023/01/28)
+        [Authorize]
         [HttpGet]
         [Route("ClientDetails")]
         public JsonResult ClientDetails(int partnerId)
@@ -43,6 +45,7 @@ namespace config_service.Controllers
         }
 
         // Get check the same email user (2023/03/26)
+        [Authorize]
         [HttpGet]
         [Route("CheckEmail")]
         public JsonResult CheckEmail(string email)
@@ -76,6 +79,7 @@ namespace config_service.Controllers
         }
 
         // Add Client to the database (2023/03/06)
+        [Authorize]
         [HttpPost]
         [Route("AddClient")]
         public JsonResult AddClient(ClientDetail c)
@@ -133,7 +137,9 @@ namespace config_service.Controllers
             }
         }
 
+
         // Get All Client Details (2023/03/16)
+        [Authorize]
         [HttpGet]
         [Route("GetAllClients")]
         public JsonResult GetAllClients()

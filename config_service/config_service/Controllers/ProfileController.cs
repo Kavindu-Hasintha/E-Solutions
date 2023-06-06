@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using config_service.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace config_service.Controllers
 {
@@ -19,6 +20,7 @@ namespace config_service.Controllers
         }
 
         // Get user name (2023/02/05)
+        [Authorize]
         [HttpGet]
         [Route("UserName")]
         public JsonResult UserName(int id)
@@ -43,6 +45,7 @@ namespace config_service.Controllers
         }
 
         // Get desig_id of the user (2023/02/16)
+        [Authorize]
         [HttpGet]
         [Route("DesigId")]
         public JsonResult DesigID(int id)
@@ -67,6 +70,7 @@ namespace config_service.Controllers
         }
 
         // Get Admin Names (2023/02/25)
+        [Authorize]
         [HttpGet]
         [Route("AdminNames")]
         public JsonResult AdminNames()
@@ -90,6 +94,7 @@ namespace config_service.Controllers
         }
 
         // Get Partner Names (2023/03/06)
+        [Authorize]
         [HttpGet]
         [Route("PartnerNames")]
         public JsonResult PartnerNames()
@@ -113,6 +118,7 @@ namespace config_service.Controllers
         }
 
         // Get Count of the same email user (2023/02/28)
+        [Authorize]
         [HttpGet]
         [Route("CountEmail")]
         public JsonResult CountEmail(string email)
@@ -146,6 +152,7 @@ namespace config_service.Controllers
         }
 
         // Get pro_id of the user (2023/02/28)
+        [Authorize]
         [HttpPost]
         [Route("GetId")]
         public JsonResult GetId(Profile p)
@@ -179,6 +186,7 @@ namespace config_service.Controllers
         }
 
         // Add Partner to the database (2023/02/28)
+        [Authorize]
         [HttpPost]
         [Route("AddPartner")]
         public JsonResult AddPartner(Profile p)
@@ -239,6 +247,7 @@ namespace config_service.Controllers
         }
 
         // Get Partner Details for particular Admin (2023/03/10)
+        [Authorize]
         [HttpPost]
         [Route("PartnerDetails")]
         public JsonResult PartnerDetails(Profile[] p)
@@ -271,6 +280,7 @@ namespace config_service.Controllers
         }
 
         // Get Partner IDs for particular Admin (2023/03/10)
+        [Authorize]
         [HttpGet]
         [Route("PartnerIDs")]
         public JsonResult PartnerIDs(int supervisorId)
@@ -317,6 +327,7 @@ namespace config_service.Controllers
         }
 
         // Get All Admin details (2023/03/16)
+        [Authorize]
         [HttpGet]
         [Route("GetAllAdmins")]
         public JsonResult GetAllAdmins()
@@ -340,6 +351,7 @@ namespace config_service.Controllers
         }
 
         // Get All Partner details (2023/03/16)
+        [Authorize]
         [HttpGet]
         [Route("GetAllPartners")]
         public JsonResult GetAllPartners()

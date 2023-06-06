@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace config_service.Controllers
 {
@@ -17,6 +18,7 @@ namespace config_service.Controllers
         }
 
         // Add Supervisor Details API (2023/02/28)
+        [Authorize]
         [HttpPost]
         [Route("AddSupervisor")]
         public JsonResult AddSupervisor(Supervisor sp)
@@ -44,6 +46,7 @@ namespace config_service.Controllers
         }
 
         // Get Partner IDs for particular Admin (2023/03/10)
+        [Authorize]
         [HttpGet]
         [Route("PartnerIDs")]
         public JsonResult PartnerIDs(int supervisorId)

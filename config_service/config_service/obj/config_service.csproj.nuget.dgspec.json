@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\L2S2\\level2_projects\\software project\\E-Solutions\\config_service\\config_service\\config_service.csproj": {}
+    "C:\\L2S2\\E-Solutions\\config_service\\config_service\\config_service.csproj": {}
   },
   "projects": {
-    "C:\\L2S2\\level2_projects\\software project\\E-Solutions\\config_service\\config_service\\config_service.csproj": {
+    "C:\\L2S2\\E-Solutions\\config_service\\config_service\\config_service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\L2S2\\level2_projects\\software project\\E-Solutions\\config_service\\config_service\\config_service.csproj",
+        "projectUniqueName": "C:\\L2S2\\E-Solutions\\config_service\\config_service\\config_service.csproj",
         "projectName": "config_service",
-        "projectPath": "C:\\L2S2\\level2_projects\\software project\\E-Solutions\\config_service\\config_service\\config_service.csproj",
+        "projectPath": "C:\\L2S2\\E-Solutions\\config_service\\config_service\\config_service.csproj",
         "packagesPath": "C:\\Users\\Tharindu chathuranga\\.nuget\\packages\\",
-        "outputPath": "C:\\L2S2\\level2_projects\\software project\\E-Solutions\\config_service\\config_service\\obj\\",
+        "outputPath": "C:\\L2S2\\E-Solutions\\config_service\\config_service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Tharindu chathuranga\\AppData\\Roaming\\NuGet\\NuGet.Config",

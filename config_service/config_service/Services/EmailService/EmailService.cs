@@ -2,10 +2,11 @@
 using MimeKit.Text;
 using MimeKit;
 using MailKit.Net.Smtp;
+using config_service.Models;
 
 namespace config_service.Services.EmailService
 {
-    
+
     public class EmailService : IEmailService
 
     {

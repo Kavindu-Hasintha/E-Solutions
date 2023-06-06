@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+3EUN+Uy1joWiRlQfLgCXWK9vobNT59G5OzXVsQNi9GgU10NMMVUW4i+CZ/FrpC1dY6smRXj7wcU7X3qAjIMew==",
+  "dgSpecHash": "OeusECOuHLTynrByRGEFKiVpnNSJbKsEFCmg/BQRYnOPHC5ArGUupM9bFvHq9qXKp4B9hm6b+lxNBLfvr0A6GQ==",
   "success": true,
-  "projectFilePath": "C:\\L2S2\\level2_projects\\software project\\E-Solutions\\config_service\\config_service\\config_service.csproj",
+  "projectFilePath": "C:\\L2S2\\E-Solutions\\config_service\\config_service\\config_service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tharindu chathuranga\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Tharindu chathuranga\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

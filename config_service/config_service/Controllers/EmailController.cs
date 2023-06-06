@@ -1,5 +1,8 @@
-﻿using MailKit.Net.Smtp;
+﻿using config_service.Models;
+using config_service.Services.EmailService;
+using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using MimeKit.Text;
@@ -16,6 +19,7 @@ namespace config_service.Controllers
         {
             _emailService = emailService;
         }
+        [Authorize]
         [HttpPost]
         public IActionResult SendEmail(EmailDto request)
         {
