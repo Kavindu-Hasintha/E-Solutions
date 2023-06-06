@@ -4,8 +4,9 @@ import { tokens } from "../theme";
 import "./ClientDetails.css";
 import logo from "../Images/logo192.png";
 import profilephoto from "../Images/65342 png.png";
-import { NavLink } from "react-router-dom";
+import { NavLink , useNavigate} from "react-router-dom";
 const ClientBox = ({
+  client_id,
   first_name,
   last_name,
   designation,
@@ -15,6 +16,11 @@ const ClientBox = ({
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const navigate = useNavigate();
+
+  const viewDashboard = () => {
+    navigate(client_id + "/console");
+  };
 
   return (
     <div className="Box">
@@ -60,7 +66,7 @@ const ClientBox = ({
         </div>
       </div>
       <div className="Bottom">
-        <button href="#" className="ViewButton">View Dashbord</button>
+        <button href="#" className="ViewButton" onClick={viewDashboard}>View Dashbord</button>
       </div>
     </div>
   );
