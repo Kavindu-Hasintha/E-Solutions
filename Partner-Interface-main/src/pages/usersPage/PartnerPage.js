@@ -95,7 +95,7 @@ const PartnerPage = (props) => {
                 <Route path="smtp" element={<Smtp />} />
                 <Route path="myProfile/*" element={<ProfileManagement />} />
                 <Route
-                path="clientDetails/moredetails" element={<ClientProfile/>}
+                path="clientDetails/clientmoredetails" element={<ClientProfile/>}
                 />
               </Routes>
             </main>

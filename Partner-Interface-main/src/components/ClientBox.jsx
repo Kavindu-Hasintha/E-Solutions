@@ -62,7 +62,7 @@ const ClientBox = ({
           <br />
           Tel.No. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {mobile_no}
           <br />
-          More details : <NavLink to={"moredetails"}>
+          More details : <NavLink to={"clientmoredetails"}>
               <a style={{color:"black",textDecoration:"none"}}>
                 More Details
               </a>
