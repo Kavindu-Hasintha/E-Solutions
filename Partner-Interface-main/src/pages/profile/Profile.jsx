@@ -456,7 +456,7 @@ const Profile = () => {
       className="WholePage"
       style={{ height: "90vh", marginLeft: "5%", marginRight: "5%" }}
     >
-      <h1 style={{ color: "Black", textAlign: "center", marginTop: "3%" }}>
+      <h1 style={{ color: "Black", textAlign: "center", marginTop: "5%" }}>
         My Profile Management
       </h1>
       <div>

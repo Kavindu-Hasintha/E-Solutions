@@ -18,6 +18,7 @@ import Access from "../../components/AccessTable";
 import ClientProfile from "../../components/ProfileDetails/ClientProfile";
 import PartnerProfile from "../../components/ProfileDetails/PartnerProfile";
 import AdminProfile from "../../components/ProfileDetails/AdminProfile";
+import ConsoleManagement from "../consoleDashboard/ConsoleManagement";
 const SuperAdminPage = (props) => {
   const [theme, colorMode] = useMode();
 
@@ -75,6 +76,7 @@ const SuperAdminPage = (props) => {
                 <Route
                 path="alladmins/adminmoredetails" element={<AdminProfile/>}
                 />
+                <Route path="allclients/*" element={<ConsoleManagement />} />
               </Routes>
             </main>
           </div>
