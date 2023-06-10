@@ -1,0 +1,13 @@
+.inputtags{
+    color: grey;
+}
+.registerbutton{
+    color: #FFFFFF;
+    background-color: #1ab394;
+    border-color: transparent;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.registerbutton:hover{
+    background-color: #2b8774;
+}
