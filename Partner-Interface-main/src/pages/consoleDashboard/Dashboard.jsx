@@ -38,7 +38,7 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        <div class="row ">
+        <div class="row " style={{marginBottom:"5%"}}>
           <div class="col-md-3">
             <div className="card">
               <div className="card-body">
