@@ -5,7 +5,7 @@ import "./ClientDetails.css";
 import logo from "../Images/logo192.png";
 import profilephoto from "../Images/65342 png.png";
 import { NavLink } from "react-router-dom";
-const AdminBox = ({ first_name, last_name, email, mobile_no }) => {
+const AdminBox = ({ first_name, last_name, email, mobile_no,profile_photo}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -32,10 +32,10 @@ const AdminBox = ({ first_name, last_name, email, mobile_no }) => {
         <div>
           <img
             className="IMG"
-            src={profilephoto}
+            src={profile_photo}
             alt="Photo"
-            width="30"
-            height="30"
+            width="50px"
+            height="50px"
           ></img>
           <b className="Client">Admin Profile</b>
         </div>
