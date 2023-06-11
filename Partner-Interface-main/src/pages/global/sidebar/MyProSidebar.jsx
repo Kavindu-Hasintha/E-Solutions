@@ -13,6 +13,7 @@ import NameUser from "./Data";
 import Options from "./Options";
 import { FaBars } from "react-icons/fa";
 import profilephoto from '../../../Images/65342 png.png';
+import ProfilePhoto from "./ProfilePhoto";
 
 const MyProSidebar = () => {
   const theme = useTheme();
@@ -133,7 +134,7 @@ const MyProSidebar = () => {
               width="100%"
               textAlign="left"
             >
-            <img src={profilephoto} className="photo" alt="profile photo"/>
+            <ProfilePhoto/>
             </Box>
             )}
             </MenuItem>

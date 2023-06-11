@@ -23,7 +23,7 @@ namespace config_service.Controllers
         [Route("UserName")]
         public JsonResult UserName(int id)
         {
-            string q = @"select pro_first_name from profile where pro_id = @Id";
+            string q = @"select pro_first_name,PhotoLink from profile where pro_id = @Id";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
             SqlDataReader myReader;

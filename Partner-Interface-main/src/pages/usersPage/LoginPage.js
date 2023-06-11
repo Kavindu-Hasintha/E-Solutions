@@ -15,7 +15,6 @@ const LoginPage = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log("Username = " + username);
     console.log("Password = " + password);
 
