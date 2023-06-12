@@ -87,7 +87,7 @@ const Form = () => {
             </tr>
             <tr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
             <tr>
-              <td colSpan={2}></td>
+              <td colSpan={1}></td>
               <td><button className="button3">Save SMTP Settings</button>
               <button className="button4">Send Test Email</button></td>
             </tr>

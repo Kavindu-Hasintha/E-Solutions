@@ -3,6 +3,7 @@ drop database config_db;
 select * from client_detail
 select * from profile
 select * from login
+
 ALTER TABLE profile ADD PhotoLink VARCHAR(255);
 
 
@@ -43,3 +44,27 @@ UPDATE profile
 SET PhotoLink = 'https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg' where pro_id = 7;
 UPDATE profile
 SET PhotoLink = 'https://img.freepik.com/premium-photo/onfident-handsome-man-with-arms-crossed-body-smiling-looking-determined_911620-3103.jpg' where pro_id = 8;
+
+select * from client_detail
+
+ALTER TABLE client_detail ADD client_photo_link VARCHAR(255);
+ALTER TABLE profile
+DROP COLUMN client_photo_link;
+UPDATE client_detail
+SET client_photo_link = 'https://www.shutterstock.com/image-photo/cheerful-bearded-man-charming-smile-260nw-2103954557.jpg' where client_id = 1;
+UPDATE client_detail
+SET client_photo_link = 'https://cpng.pikpng.com/pngl/s/540-5402180_guy-modified-dunder-mifflin-paper-company-businessguymodified-official.png' where client_id = 3;
+UPDATE client_detail
+SET client_photo_link = 'https://img.freepik.com/free-photo/proud-young-executive-ready-start_1139-303.jpg?w=2000' where client_id = 2;
+UPDATE client_detail
+SET client_photo_link = 'https://www.shutterstock.com/image-photo/businessman-smiling-arms-crossed-on-260nw-2023023581.jpg' where client_id = 4;
+UPDATE client_detail
+SET client_photo_link = 'https://st3.depositphotos.com/2931363/14308/i/600/depositphotos_143087319-stock-photo-handsome-businessman-in-black-suit.jpg' where client_id = 5;
+UPDATE client_detail
+SET client_photo_link = 'https://www.shutterstock.com/image-photo/successful-businessman-standing-on-light-260nw-1202416018.jpg' where client_id = 6;
+UPDATE client_detail
+SET client_photo_link = 'https://www.shutterstock.com/image-photo/portrait-handsome-man-260nw-197019368.jpg' where client_id = 7;
+UPDATE client_detail
+SET client_photo_link = 'https://www.shutterstock.com/image-photo/portrait-handsome-mature-man-wearing-260nw-1364728433.jpg' where client_id = 8;
+UPDATE client_detail
+SET client_photo_link = 'https://www.shutterstock.com/image-photo/smart-caucasian-mature-middleaged-freelancer-260nw-2175085685.jpg' where client_id = 9;

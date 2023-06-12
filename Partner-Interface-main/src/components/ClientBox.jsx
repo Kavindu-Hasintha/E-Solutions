@@ -2,8 +2,6 @@ import React from "react";
 import { Typography, Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import "./ClientDetails.css";
-import logo from "../Images/logo192.png";
-//import profilephoto from "../Images/65342 png.png";
 import { NavLink , useNavigate} from "react-router-dom";
 const ClientBox = ({
   client_id,
@@ -27,7 +25,7 @@ const ClientBox = ({
       <div className="Upper">
         <p className="Heads">
           <div className="Head">
-            <b className="head1">General Manager</b>
+            <b className="head1">{designation}</b>
             <br />
             <b className="head2">hSenid Business</b>
           </div>
@@ -53,7 +51,7 @@ const ClientBox = ({
           <b className="Client">Client Profile Details</b>
         </div>
         <br />
-        <div className="Content">
+        {/* <div className="Content">
           Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {first_name} {last_name}
           <br />
           Designation <span></span> : {designation}
@@ -67,7 +65,38 @@ const ClientBox = ({
                 More Details
               </a>
             </NavLink>
-        </div>
+        </div> */}
+        <table className="Content">
+          <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td>{first_name} {last_name}</td>
+          </tr>
+          <tr>
+            <td>Designation</td>
+            <td>:</td>
+            <td>{designation}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>:</td>
+            <td>{email}</td>
+          </tr>
+          <tr>
+            <td>Tel.No.</td>
+            <td>:</td>
+            <td>{mobile_no}</td>
+          </tr>
+          <tr>
+            <td>More Details</td>
+            <td>:</td>
+            <td><NavLink to={"clientmoredetails"}>
+              <a style={{color:"black",textDecoration:"none"}}>
+                More Details
+              </a>
+            </NavLink></td>
+          </tr>
+        </table>
       </div>
       <div className="Bottom">
         <button href="#" className="ViewButton" onClick={viewDashboard}>View Dashbord</button>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ApiPath } from "../../API/ApiPath";
 import AdminBox from "../../components/AdminBox";
 import '../clientDetails/ClientDetails.css';
+
 class AdminDetails extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +11,7 @@ class AdminDetails extends Component {
       DataisLoaded: false,
       va: window.location.pathname.split("/"),
       currentPage: 1,
-      itemsPerPage: 6, // number of items to be displayed per page
+      itemsPerPage: 6, 
     };
   }
 
@@ -74,6 +75,7 @@ class AdminDetails extends Component {
                 email={admin.pro_email}
                 mobile_no={admin.pro_mobile}
                 profile_photo={admin.PhotoLink}
+                designation={admin.designation}
               />
             </ol>
           ))}
