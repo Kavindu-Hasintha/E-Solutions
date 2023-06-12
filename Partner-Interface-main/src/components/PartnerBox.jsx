@@ -2,8 +2,6 @@ import React from "react";
 import { Typography, Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import "./ClientDetails.css";
-import logo from "../Images/logo192.png";
-import profilephoto from "../Images/65342 png.png";
 import { NavLink } from "react-router-dom";
 const PartnerBox = ({ first_name, last_name, email, mobile_no,photo_link }) => {
   const theme = useTheme();
@@ -61,9 +59,11 @@ const PartnerBox = ({ first_name, last_name, email, mobile_no,photo_link }) => {
         </div>
       </div>
       <div className="Bottom">
+      <NavLink to={"partnerdashboard"}>
         <button href="#" className="ViewButton">
           View Dashbord
         </button>
+        </NavLink>
       </div>
     </div>
   );

@@ -61,9 +61,11 @@ const AdminBox = ({ first_name, last_name, email, mobile_no,profile_photo}) => {
         </div>
       </div>
       <div className="Bottom">
+        <NavLink to={"admindashboard"}>
         <button href="#" className="ViewButton">
           View Dashbord
         </button>
+        </NavLink>
       </div>
     </div>
   );

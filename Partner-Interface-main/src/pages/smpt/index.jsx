@@ -89,12 +89,11 @@ const Form = () => {
             <tr>
               <td colSpan={2}></td>
               <td><button className="button3">Save SMTP Settings</button>
-            <button className="button4">Send Test Email</button></td>
+              <button className="button4">Send Test Email</button></td>
             </tr>
           </table>
         </div>
       </div>
-
     </Box>
   );
 };
