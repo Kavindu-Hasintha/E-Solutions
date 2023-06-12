@@ -351,7 +351,7 @@ namespace config_service.Controllers
         }
 
         // Get All Partner details (2023/03/16)
-        [Authorize]
+       
         [HttpGet]
         [Route("GetAllPartners")]
         public JsonResult GetAllPartners()

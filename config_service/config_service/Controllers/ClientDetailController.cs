@@ -139,7 +139,7 @@ namespace config_service.Controllers
 
 
         // Get All Client Details (2023/03/16)
-        [Authorize]
+        
         [HttpGet]
         [Route("GetAllClients")]
         public JsonResult GetAllClients()

@@ -17,7 +17,7 @@ namespace config_service.Controllers
         }
 
         // Get All departments (2023/02/25)
-        [Authorize]
+      
         [HttpGet]
         [Route("Departments")]
         public JsonResult Departments()

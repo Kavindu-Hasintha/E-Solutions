@@ -9,6 +9,7 @@ using MimeKit.Text;
 
 namespace config_service.Controllers
 {
+   
     [Route("api/[controller]")]
     [ApiController]
     public class EmailController : ControllerBase
@@ -19,7 +20,7 @@ namespace config_service.Controllers
         {
             _emailService = emailService;
         }
-        [Authorize]
+       
         [HttpPost]
         public IActionResult SendEmail(EmailDto request)
         {
