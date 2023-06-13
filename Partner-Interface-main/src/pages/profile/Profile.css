@@ -1,0 +1,149 @@
+.heading {
+  color: Black;
+  text-align: center;
+  margin-top: 0;
+}
+.WholePage {
+  border: 1px solid #bed5d1;
+  border-radius: 8px;
+  box-shadow: 0 0 2px 2px #747c7b;
+}
+
+/* .row_box {
+  display: flex;
+  justify-content: center;
+}
+
+.row_box_left {
+  margin-right: 20px;
+}
+
+.row_box_right {
+  margin-left: 20px;
+} */
+
+.inputtags {
+  /* width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-color: transparent;
+  outline: transparent;
+  outline-color: transparent;
+  border-bottom: 1px solid #bdbdbd;
+  
+  background-color: #fff;
+  color: #747c7b; */
+  font-size: 1.5rem;
+  border: transparent;
+  border-bottom: 1px solid #bdbdbd;
+  margin: 8px 0;
+  padding: 12px 20px;
+}
+
+.inputtags:focus {
+  outline-color: #1ab394;
+  box-shadow: 0 0 5px #1ab394;
+}
+
+.input_select {
+  /* width: 245px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-color: transparent;
+  border-bottom: 1px solid #bdbdbd;;
+  font-size: 1rem;
+  height: 44px;
+  color: #747c7b; */
+  font-size: 1.5rem;
+  border-left: transparent;
+  border-right: transparent;
+  border-top: transparent;
+  border-bottom: 1px solid #bdbdbd;
+  margin: 8px 0;
+  padding: 0px 120px;
+  color: grey;
+  text-align: left;
+}
+.input_select:focus {
+  outline-color: #1ab394;
+  box-shadow: 0 0 5px #1ab394;
+}
+.buttons {
+  margin: 8px 0;
+}
+
+.button_edit {
+  color: #fff;
+  margin-right: 20px;
+  padding: 5px 10px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  height: 40px;
+  box-sizing: border-box;
+  background-color: #1ab394;
+  font-size: 1rem;
+  border: 1px solid #1ab394;
+}
+
+.button_edit:hover {
+  background-color: #2b8774;
+  border: 1px solid #2b8774;
+}
+
+.button_save {
+  color: #fff;
+  margin-left: 20px;
+  padding: 5px 10px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  height: 40px;
+  box-sizing: border-box;
+  background-color: #1ab394;
+  font-size: 1rem;
+  border: 1px solid #1ab394;
+}
+
+.button_save:hover {
+  background-color: #2b8774;
+  border: 1px solid #2b8774;
+}
+
+.buttonpassword {
+  color: #fff;
+  padding: 5px 10px;
+  padding: 12px 20px;
+  margin-left: 5px;
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #1ab394;
+  font-size: 1rem;
+  border: 1px solid #1ab394;
+}
+
+.buttonpassword:hover {
+  background-color: #2b8774;
+  border: 1px solid #2b8774;
+}
+
+.buttonDisable {
+  color: #fff;
+  padding: 5px 10px;
+  padding: 12px 20px;
+  margin-left: 5px;
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #ff0000;
+  font-size: 1rem;
+  border: 1px solid #ff0000;
+}
+
+.buttonDisable:hover {
+  background-color: #cb0000;
+  border: 1px solid #cb0000;
+}
