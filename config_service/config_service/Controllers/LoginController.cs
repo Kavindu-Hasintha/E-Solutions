@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 
 namespace config_service.Controllers
 {
@@ -19,9 +22,17 @@ namespace config_service.Controllers
     public class LoginController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public LoginController(IConfiguration configuration)
+        private readonly UserManager<Login> _userManager;
+        private readonly SignInManager<Login> _signInManager;
+
+        public LoginController(
+            IConfiguration configuration,
+            UserManager<Login> userManager,
+            SignInManager<Login> signInManager)
         {
             _configuration = configuration;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         private string GenerateToken(Login login)
@@ -43,54 +54,19 @@ namespace config_service.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private Login AuthenticateLogin(Login login)
+        private async Task<Login> AuthenticateLogin(Login login)
         {
-            Login _login = null;
-            string q = @"select pro_id, desig_id from login where username = @username and password = @password";
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
-            SqlDataReader myReader = null; // initialize the reader to null
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            var user = await _userManager.FindByNameAsync(login.username);
+            if (user != null)
             {
-                try
+                var result = await _signInManager.CheckPasswordSignInAsync(user, login.password, false);
+                if (result.Succeeded)
                 {
-                    myCon.Open();
-                    using (SqlCommand myCommand = new SqlCommand(q, myCon))
-                    {
-                        myCommand.Parameters.AddWithValue("@username", login.username);
-                        myCommand.Parameters.AddWithValue("@password", login.password);
-                        myReader = myCommand.ExecuteReader();
-                        table.Load(myReader);
-                        myReader.Close();
-                    }
-                    myCon.Close();
-                }
-                catch (Exception ex)
-                {
-                    // Handle the exception here (e.g. log it, return a null value, etc.)
-                    if (myReader != null && !myReader.IsClosed)
-                    {
-                        myReader.Close();
-                    }
-                    if (myCon.State != ConnectionState.Closed)
-                    {
-                        myCon.Close();
-                    }
-                    return null;
+                    return user;
                 }
             }
-            if (table.Rows.Count == 0)
-            {
-                return null;
-            }
-            else
-            {
-                DataRow row = table.Rows[0];
-                _login = new Login { username = login.username, pro_id = Convert.ToInt32(row["pro_id"]), desig_id = Convert.ToInt32(row["desig_id"]) };
-                return _login;
-            }
+            return null;
         }
-
 
         // Testing API - To check DB con and API are working 
         [HttpGet]
@@ -114,35 +90,72 @@ namespace config_service.Controllers
             return new JsonResult(table);
         }
 
-        // Login API (2023/01/23)
-
+        // Login API
         [HttpPost]
         [Route("Login")]
-
-        public IActionResult Login(Login login)
+        public async Task<IActionResult> Login(Login login)
         {
             IActionResult response = Unauthorized();
-            var user = AuthenticateLogin(login);
+            var user = await AuthenticateLogin(login);
             if (user != null)
             {
-                var token = GenerateToken(user);
+                var token = GenerateToken(login);
                 response = Ok(new { token = token });
             }
             return response;
         }
 
+        // Forgot Password API
+        [HttpPost]
+        [Route("ForgotPassword")]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            // Check if the email exists in the database
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                // Email not found, return error response
+                return BadRequest("Invalid email address");
+            }
 
-        //forgot password
+            // Generate a password reset token and send password reset email to the user
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var passwordResetLink = Url.Action("ResetPassword", "Login", new { email = email, token = token }, Request.Scheme);
+            // Send email with password reset link to the user
 
+            return Ok("Password reset link has been sent to your email address");
+        }
 
+        // Reset Password API
+        [HttpPost]
+        [Route("ResetPassword")]
+        public async Task<IActionResult> ResetPassword(string email, string token, string newPassword)
+        {
+            // Check if the email exists in the database
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                // Email not found, return error response
+                return BadRequest("Invalid email address");
+            }
 
-        // Add Login Details API (2023/02/28)
+            // Verify the password reset token
+            var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
+            if (!result.Succeeded)
+            {
+                // Invalid token or new password does not meet the password policy requirements
+                return BadRequest(result.Errors);
+            }
 
+            return Ok("Password has been reset successfully");
+        }
+
+        // Add Login Details API
         [HttpPost]
         [Route("AddLogin")]
-        public JsonResult AddLogin(Login ln)
+        public JsonResult AddLogin(Login login)
         {
-            string q = @"insert into login (username, password, pro_id, desig_id) values (@username, @password, @pid, @did)";
+            string q = @"INSERT INTO login (username, password, pro_id) VALUES ('" + login.username + "','" + login.password + "'," + login.pro_id + ")";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
             SqlDataReader myReader;
@@ -151,19 +164,59 @@ namespace config_service.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(q, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@username", ln.username);
-                    myCommand.Parameters.AddWithValue("@password", ln.password);
-                    myCommand.Parameters.AddWithValue("@pid", ln.pro_id);
-                    myCommand.Parameters.AddWithValue("@did", ln.desig_id);
-
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
                     myCon.Close();
                 }
             }
-            return new JsonResult(1);
+            return new JsonResult("Login details added successfully");
+        }
 
+        // Update Login Details API
+        [HttpPut]
+        [Route("UpdateLogin")]
+        public JsonResult UpdateLogin(Login login)
+        {
+            string q = @"UPDATE login SET password='" + login.password + "' WHERE username='" + login.username + "'";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(q, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Login details updated successfully");
+        }
+
+        // Delete Login Details API
+        [HttpDelete]
+        [Route("DeleteLogin/{username}")]
+        public JsonResult DeleteLogin(string username)
+        {
+            string q = @"DELETE FROM login WHERE username='" + username + "'";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("ConfigDBConnecion");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(q, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Login details deleted successfully");
         }
     }
 }

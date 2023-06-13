@@ -1,3 +1,4 @@
+
 global using config_service.Services.EmailService;
 global using config_service.Models;
 using Microsoft.Extensions.Options;
@@ -12,8 +13,6 @@ internal class Program
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
-
         // Add services to the container.
 
         builder.Services.Configure<DataProtectionTokenProviderOptions>(opts => opts.TokenLifespan = TimeSpan.FromHours(10));
@@ -41,6 +40,7 @@ internal class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
 
         builder.Services.AddScoped<IEmailService, EmailService>();
 
