@@ -8,10 +8,13 @@ import "./Components.css";
 
 function Dashboard() {
   return (
-    <div >
-      <div className="container" style={{width:"2000%"}}>
-        <div class="row" style={{marginLeft:"25%",marginTop:"3%",marginBottom:"3%"}}>
-          <div class="col-md-3" style={{marginRight:"10%"}}>
+    <div>
+      <div className="container" style={{ width: "2000%" }}>
+        <div
+          class="row"
+          style={{ marginLeft: "25%", marginTop: "3%", marginBottom: "3%" }}
+        >
+          <div class="col-md-3" style={{ marginRight: "10%" }}>
             <div className="card">
               <div className="card-body">
                 <h3>Error Log File</h3>
@@ -38,11 +41,11 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        <div class="row " style={{marginLeft:"25%"}}>
-          <div class="col-md-3" style={{marginRight:"10%"}}>
+        <div class="row " style={{ marginLeft: "25%" }}>
+          <div class="col-md-3" style={{ marginRight: "10%" }}>
             <div className="card">
               <div className="card-body">
-                <h3>ReportHosting</h3>
+                <h3>Report Hosting</h3>
                 <TbDeviceDesktopAnalytics style={{ fontSize: "100px" }} />
                 <div className="linkclass">
                   <Link to="ReportHosting">

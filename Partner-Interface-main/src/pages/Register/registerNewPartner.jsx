@@ -196,7 +196,7 @@ class RegisterNewPartner extends Component {
             <table
               style={{
                 alignContent: "center",
-                // margin: "0px auto",
+                margin: "0px auto",
                 marginTop: "5%",
                 fontSize: "24px",
                 marginBottom: "10%",

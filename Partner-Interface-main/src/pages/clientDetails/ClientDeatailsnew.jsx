@@ -11,7 +11,7 @@ class ClientDetails extends Component {
       DataisLoaded: false,
       va: window.location.pathname.split("/"),
       currentPage: 1,
-      itemsPerPage: 6, // number of items to be displayed per page
+      itemsPerPage: 6,
     };
   }
 
@@ -76,6 +76,7 @@ class ClientDetails extends Component {
           {currentItems.map((client) => (
             <ol key={client.client_id} style={{ padding: "0" }}>
               <ClientBox
+                client_id={client.client_id}
                 first_name={client.first_name}
                 last_name={client.last_name}
                 designation={client.designation}

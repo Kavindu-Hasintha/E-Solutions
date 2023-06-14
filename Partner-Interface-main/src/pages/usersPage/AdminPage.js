@@ -29,10 +29,7 @@ const AdminPage = (props) => {
               <Topbar onlogOut={logOut} />
               <Routes>
                 <Route path="" element={<PartnerDetails />} />
-                <Route
-                  path="newPartner/notifications"
-                  element={<NotificationBox />}
-                />
+                <Route path="/notifications" element={<NotificationBox />} />
                 <Route path="myProfile/*" element={<ProfileManagement />} />
                 <Route path="sendEmail" element={<EmailSend />} />
               </Routes>

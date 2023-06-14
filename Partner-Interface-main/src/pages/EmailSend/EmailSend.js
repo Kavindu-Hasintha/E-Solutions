@@ -5,6 +5,8 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ApiPath } from "../../API/ApiPath";
+
+import { Box, useTheme } from "@mui/material";
 const isEmail = (email) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
@@ -86,53 +88,70 @@ function EmailSend() {
   };
 
   return (
-    <Form>
-      <ToastContainer position="top-center" />
-      <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
-        <Form.Label>From</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="name@gmail.com"
-          onChange={changeHandler}
-          value={data.From}
-          name="From"
-        />
-      </Form.Group>
-      <Form.Group className="mb-3 " controlId="exampleForm.ControlInput2">
-        <Form.Label>To</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="name@gmail.com"
-          onChange={changeHandler}
-          value={data.To}
-          name="To"
-        />
-      </Form.Group>
-      <Form.Group className="mb-3 " controlId="exampleForm.ControlInput3">
-        <Form.Label>Subject</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder=""
-          onChange={changeHandler}
-          value={data.Subject}
-          name="Subject"
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Body</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={5}
-          placeholder=""
-          onChange={changeHandler}
-          value={data.Body}
-          name="Body"
-        />
-      </Form.Group>
-      <Button variant="success" onClick={submitHandler}>
-        Send
-      </Button>
-    </Form>
+    <article
+      className="br3 ba b--black-10 shadow-1 center"
+      style={{
+        Color: "silver",
+        margin: "10px auto",
+        width: "95%",
+        padding: "0",
+      }}
+    >
+      <Box>
+        <h1 className="header">Email Send</h1>
+      </Box>
+      <Form className="emailSendForm">
+        <ToastContainer position="top-center" />
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label style={{ color: "#000" }}>From</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="name@gmail.com"
+            onChange={changeHandler}
+            value={data.From}
+            name="From"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput2">
+          <Form.Label style={{ color: "#000" }}>To</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="name@gmail.com"
+            onChange={changeHandler}
+            value={data.To}
+            name="To"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput3">
+          <Form.Label style={{ color: "#000" }}>Subject</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder=""
+            onChange={changeHandler}
+            value={data.Subject}
+            name="Subject"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label style={{ color: "#000" }}>Body</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={5}
+            placeholder=""
+            onChange={changeHandler}
+            value={data.Body}
+            name="Body"
+          />
+        </Form.Group>
+        <Button
+          variant="success"
+          style={{ marginBottom: "20px" }}
+          onClick={submitHandler}
+        >
+          Send
+        </Button>
+      </Form>
+    </article>
   );
 }
 

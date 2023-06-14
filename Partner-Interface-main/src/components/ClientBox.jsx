@@ -32,7 +32,7 @@ const ClientBox = ({
   const [partners, setPartners] = useState([]);
 
   const viewDashboard = () => {
-    navigate(client_id + "/console");
+    navigate(client_id + "/console/");
   };
 
   const getPartners = () => {

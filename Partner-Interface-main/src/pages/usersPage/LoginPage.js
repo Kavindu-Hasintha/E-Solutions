@@ -28,16 +28,49 @@ const LoginPage = (props) => {
     console.log("Username = " + username);
     console.log("Password = " + password);
 
-    if (username === "vinuka@gmail.com") {
-      props.onLogin();
-      navigate("/superadmin/" + 1);
-    } else if (username === "nethmi@gmail.com") {
-      props.onLogin();
-      navigate("/admin/" + 2);
-    } else if (username === "tharindu@gmail.com") {
-      // Protected Routes (2023/02/04)
-      props.onLogin();
-      navigate("/partner/" + 4);
+    if (!username || !password) {
+      toast.error("Please fill all the fields!");
+    } else {
+      fetch(ApiPath.API_URL + "Login/Login", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      })
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if (result !== -1) {
+              console.log(result[0].pro_id);
+              console.log(result[0].desig_id);
+              if (result[0].desig_id === 1) {
+                props.onLogin();
+                navigate("/superadmin/" + result[0].pro_id);
+              } else if (result[0].desig_id === 2) {
+                props.onLogin();
+                navigate("/admin/" + result[0].pro_id);
+              } else if (result[0].desig_id === 3) {
+                // Protected Routes (2023/02/04)
+                props.onLogin();
+                navigate("/partner/" + result[0].pro_id);
+              }
+            } else {
+              console.log(result);
+              toast.error("Login Failed!");
+            }
+          },
+          (error) => {
+            toast.error(
+              "Something wrong in the response that coming from API!"
+            );
+            console.log(error);
+          }
+        );
     }
 
     // if (!username || !password) {

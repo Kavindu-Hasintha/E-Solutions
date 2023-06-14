@@ -105,7 +105,7 @@ insert into login (username, password, pro_id, desig_id) values
 insert into login (username, password, pro_id, desig_id) values 
 	('tharindu@gmail.com', 'tharindu', 4, 3);
 insert into login (username, password, pro_id, desig_id) values 
-	('thushan@gmail.com', 'thu', 21, 2);
+	('pravindu@gmail.com', 'pravindu', 3, 3);
 
 select * from login;
 
@@ -210,6 +210,7 @@ select id, p_name, status, progress, created_at from project where pro_id = 4 an
 update project set p_name = 'a' where id = 31;
 
 ****************************************************************************
+********************************************************************************
 2023-06-11
 Servers Table
 create table server (
@@ -239,71 +240,110 @@ LEFT JOIN client_detail as c
 ON s.client_id = c.client_id
 ORDER BY s.id;
 
-*****************************************************************************************************************
-*****************************************************************************************************************
-*****************************************************************************************************************
+*********************************************************************************
+***********************************
 
-
-create table profile_reportto (
+create table errorLog (
 	id int not null IDENTITY(1, 1),
-	sup_id int,
-	prof_id int,
-	constraint pro_repo_fk_sup_id foreign key(sup_id) references profile(pro_id),
-	constraint pro_repo_fk_prof_id foreign key(prof_id) references profile(pro_id),
-	constraint pro_repo_pk primary key (id)
+	client_id int not null,
+	file_name varchar(255),
+	file_size int, 
+	constraint errorLog_fk_pro_id foreign key(client_id) references client_detail(client_id) ON DELETE CASCADE,
+	constraint errorLog_pk primary key(id)
 );
+select * from errorLog;
 
-create table sys_capability (
-	sys_capa_id int not null IDENTITY(1, 1),
-	sys_capa_name varchar(100) not null,
-	constraint sys_capa_pk primary key (sys_capa_id)
-);
+insert into errorLog (client_id, file_name, file_size) values (1, 'Error Log File 1', 5), 
+(1, 'Error Log File 2', 6), 
+(1, 'Error Log File 3', 6),
+(1, 'Error Log File 4', 3),
+(1, 'Error Log File 5', 7),
+(1, 'Error Log File 6', 4); 
+insert into errorLog (client_id, file_name, file_size) values (2, 'Error Log File 1', 5), 
+(2, 'Error Log File 2', 6), 
+(2, 'Error Log File 3', 6),
+(2, 'Error Log File 4', 3),
+(2, 'Error Log File 5', 7),
+(2, 'Error Log File 6', 4);
 
-create table sys_cap_matrix (
-	matrix_id int not null IDENTITY(1, 1),
-	sys_capability_id int,
-	action varchar(255),
-	access_right int,
-	constraint cap_matrix_fk_capa_id foreign key(sys_capability_id) references sys_capability(sys_capa_id) on delete set null on update cascade,
-	constraint cap_matrix_pk primary key (matrix_id)
-);
-
-create table config_user (
-	user_key int not null IDENTITY(1, 1),
-	pro_id int,
-	user_name varchar(200),
-	display_name varchar(200),
-	user_status int,
-	user_time_stamp datetime,
-	user_update_time datetime,
-	sys_capability_id int,
-	constraint user_fk_pro_id foreign key(pro_id) references profile(pro_id) on delete NO ACTION on update cascade,
-	constraint user_fk_cap_id foreign key(sys_capability_id) references sys_capability(sys_capa_id) on delete NO ACTION on update cascade,
-	constraint user_pk primary key (user_key)
-);
-
-create table config_user_login (
-	usl_id int not null IDENTITY(1, 1),
-	usl_provider varchar(255) not null,
-	usl_password varchar(100) not null,
-	user_key int,
-	usl_status int,
-	usl_updatedate date,
-	constraint usl_fk_user_key foreign key(user_key) references config_user(user_key) on delete NO ACTION on update cascade,
-	constraint config_user_login_pk primary key (usl_id)
-);
-
-create table log_history (
-	log_id int not null IDENTITY(1, 1),
-	usl_id int,
-	pro_id int,
-	log_time datetime not null,
-	action varchar(255),
+create table service (
+	id int not null IDENTITY(1, 1),
+	client_id int not null,
+	name varchar(255),
 	description varchar(255),
-	change_old varchar(255),
-	change_new varchar(255),
-	constraint log_history_fk_usl_id foreign key(usl_id) references config_user_login(usl_id),
-	constraint log_history_fk_pro_id foreign key(pro_id) references profile(pro_id),
-	constraint log_history_pk primary key (log_id)
+	status varchar(40),
+	startUpType varchar(40),
+	logOnAs varchar(40), 
+	constraint service_fk_pro_id foreign key(client_id) references client_detail(client_id) ON DELETE CASCADE,
+	constraint service_pk primary key(id)
 );
+select * from service;
+insert into service (client_id, name, description, status, startUpType, logOnAs) values 
+(1, 'Service 1', 'descrip 1', 'Running', 'Manual', 'Local System'), 
+(1, 'Service 2', 'descrip 2', 'Running', 'Automatic', 'Local System'), 
+(1, 'Service 3', 'descrip 3', '', 'Manual', 'Local System'), 
+(1, 'Service 4', 'descrip 4', '', 'Manual', 'Local System'), 
+(1, 'Service 5', 'descrip 5', 'Running', 'Automatic', 'Local System'), 
+(1, 'Service 6', 'descrip 6', 'Running', 'Manual', 'Local System');
+
+insert into service (client_id, name, description, status, startUpType, logOnAs) values 
+(2, 'Service 1', 'descrip 1', '', 'Automatic', 'Local System'), 
+(2, 'Service 2', 'descrip 2', 'Running', 'Automatic', 'Local System'), 
+(2, 'Service 3', 'descrip 3', '', 'Manual', 'Local System'), 
+(2, 'Service 4', 'descrip 4', '', 'Manual', 'Local System'), 
+(2, 'Service 5', 'descrip 5', 'Running', 'Automatic', 'Local System'), 
+(2, 'Service 6', 'descrip 6', '', 'Manual', 'Local System');
+
+create table reportHosting (
+	id int not null IDENTITY(1, 1),
+	client_id int not null,
+	file_name varchar(255),
+	file_size int, 
+	constraint reportHosting_fk_pro_id foreign key(client_id) references client_detail(client_id) ON DELETE CASCADE,
+	constraint reportHosting_pk primary key(id)
+);
+select * from reportHosting;
+insert into reportHosting (client_id, file_name, file_size) values 
+(1, 'Report File 1', 5), 
+(1, 'Report File 2', 6), 
+(1, 'Report File 3', 6),
+(1, 'Report File 4', 3),
+(1, 'Report File 5', 7),
+(1, 'Report File 6', 4); 
+
+insert into reportHosting (client_id, file_name, file_size) values 
+(2, 'Report File 1', 3), 
+(2, 'Report File 2', 2), 
+(2, 'Report File 3', 8),
+(2, 'Report File 4', 4),
+(2, 'Report File 5', 2),
+(2, 'Report File 6', 7); 
+
+create table alert (
+	id int not null IDENTITY(1, 1),
+	client_id int not null,
+	file_name varchar(255),
+	file_size int, 
+	constraint alert_fk_pro_id foreign key(client_id) references client_detail(client_id) ON DELETE CASCADE,
+	constraint alert_pk primary key(id)
+);
+select * from alert;
+insert into alert (client_id, file_name, file_size) values 
+(1, 'Error Alert 1', 3), 
+(1, 'Success Alert 2', 9), 
+(1, 'Error', 6),
+(1, 'Error', 3),
+(1, 'Alert 5', 7),
+(1, 'Alert 6', 2); 
+insert into alert (client_id, file_name, file_size) values 
+(2, 'Alert 1', 8), 
+(2, 'Alert 2', 4), 
+(2, 'Error', 6),
+(2, 'Error', 5),
+(2, 'Alert 5', 7),
+(2, 'Alert 6', 2); 
+
+*****************************************************************************************************************
+*****************************************************************************************************************
+*****************************************************************************************************************
 

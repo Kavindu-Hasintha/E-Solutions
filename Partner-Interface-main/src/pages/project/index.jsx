@@ -385,7 +385,6 @@ const Projects = () => {
         .then(
           (result) => {
             handleClose();
-            emptyFields();
 
             if (result === 1) {
               toast.success("New Project added successfully");
